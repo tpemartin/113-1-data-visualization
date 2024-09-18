@@ -61,8 +61,7 @@ $ `2022`     <dbl> 354219, 78318, 52725, 165895, 7556, 133203
 - provide context to make your direction clear.
 ```
 
-
-## Program
+### Program
 
 ```{r}
 library(tidyverse)
@@ -123,6 +122,26 @@ ggplot(總人數_by_country, aes(x = 年度, y = 總人數, color = 首站抵達
 - x軸不是連續的年份，而是字符型，則點不會連成線。
 - 進入作圖前，最好glimpse一下資料，確保資料格式正確。
 ```
+
+
+## Modify theme
+
+You can upload an image whose design attracts you and ask for a similar theme in your graph.
+
+```{r}
+g <- 
+ggplot(總人數_by_country, aes(x = 年度, y = 總人數, color = 首站抵達地)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "不同首站抵達地的年度總人數",
+       x = "年度",
+       y = "總人數") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # 調整 x 軸標籤角度
+
+g + new theme...
+```
+
 
 ## Exercise
 
