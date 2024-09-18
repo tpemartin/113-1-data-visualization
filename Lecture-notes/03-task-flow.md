@@ -15,8 +15,11 @@ theme_set(
 )
 ```
 
-# Task flow 
+# Data mining 
 
+[歷年中華民國國民出國目的地人數統計](https://data.gov.tw/dataset/7325)
+
+## State mining direction
 
 > 想計算不同"首站抵達地"的各年度總人數並以適當圖形呈現。
 
@@ -53,7 +56,13 @@ $ `2022`     <dbl> 354219, 78318, 52725, 165895, 7556, 133203
 ```
 > 想計算不同"首站抵達地"的各年度總人數並以適當圖形呈現。
 
+```diff
+- 為確保任務的連續性，最好提到所關注物件在環境裡的名稱。
+- provide context to make your direction clear.
+```
 
+
+## Program
 
 ```{r}
 library(tidyverse)
@@ -89,3 +98,32 @@ ggplot(總人數_by_country, aes(x = 年度, y = 總人數, color = 首站抵達
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # 調整 x 軸標籤角度
 ```
+
+> It is always good to check the data used in `ggplot` to make sure it is in the format you expect.
+
+```{r}
+glimpse(總人數_by_country)
+```
+
+```{r}
+# 確保年度是數值型
+總人數_by_country$年度 <- as.numeric(總人數_by_country$年度)
+
+ggplot(總人數_by_country, aes(x = 年度, y = 總人數, color = 首站抵達地)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "不同首站抵達地的年度總人數",
+       x = "年度",
+       y = "總人數") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # 調整 x 軸標籤角度
+```
+
+```diff
+- x軸不是連續的年份，而是字符型，則點不會連成線。
+- 進入作圖前，最好glimpse一下資料，確保資料格式正確。
+```
+
+## Exercise
+
+[UberEats 資料](https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=215920315#gid=215920315)
