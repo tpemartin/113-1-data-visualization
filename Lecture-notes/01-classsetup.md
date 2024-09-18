@@ -8,7 +8,7 @@
 
 We will use Google classroom to manage the course materials and assignments. You will find materials:
 
-- Lecture notes, hosted in [GitHub]([https://github.com)(https://github.com/tpemartin/113-1-R/tree/main/Lecture-notes)
+- Lecture notes, hosted in [GitHub]([https://github.com)(https://github.com/tpemartin/113-1-data-visualization/tree/main/Lecture-notes)
 - Weekly video recordings
 - The class's cloud computing workspace (hosted in [Posit](https://posit.cloud/))
 
