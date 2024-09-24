@@ -44,8 +44,6 @@ This prompts has three parts:
      - "In the global enviroment" tells AI NO NEED to create an example object.  
      -  Mentioning object name `gdpGrowth` is to ensure the codes can be continuously applied when task is divided.  
   2. Use `dgpGrowth |> head(2) |> glimpse()` to show first 2 observations of the data frame and its structure: 
-<blockquote>
-
 ```
 Rows: 2
 Columns: 20
@@ -59,6 +57,5 @@ $ `2014 [YR2014]` <dbl> 3.2024538, 0.2962055
 $ `2015 [YR2015]` <dbl> 2.809103, 1.560627
 ```
 
-</blockquote>  
-  1. "It is a data set that contains the GDP growth rate of several countries from year 2000 to 2015.": provide context to make your direction clear.   
-  2. "Properly visualize the GDP growth rates of each country": specify result format.  
+  3. "It is a data set that contains the GDP growth rate of several countries from year 2000 to 2015.": provide context to make your direction clear.   
+  4. "Properly visualize the GDP growth rates of each country": specify result format.  
