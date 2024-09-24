@@ -1,7 +1,6 @@
 # Print out settings
 
-# AI prompts guidelines
-
+## Recap: AI prompts guidelines
 
   1. **Clear direction**: Provide a clear and concise description of the task you want to accomplish.
   2. **Provide example**: Provide an example of the input data or code you are working with.  
@@ -9,7 +8,13 @@
   4. **Divide task**: Divide your task into smaller tasks.
   5. **Evaluate quality**: Evaluate the quality of the code provided by the AI assistant.
 
+## Example Dataset 
 
+[GDP growth](https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=892490556#gid=892490556) dataset comes from World Bank [Data Bank](https://databank.worldbank.org/home.aspx).
+
+Our task is to visualize the GDP growth rates of each country from year 2000 to 2015, and save the graph as a PNG file properly.
+
+Suppose you import the data set as `gdpGrowth`. Consider the following prompt:
 
 ```diff
 - In the global environment `gdpGrowth` data frame has the following structure:
@@ -57,8 +62,8 @@ $ `2014 [YR2014]` <dbl> 3.2024538, 0.2962055
 $ `2015 [YR2015]` <dbl> 2.809103, 1.560627
 ```
 
-  3. "It is a data set that contains the GDP growth rate of several countries from year 2000 to 2015.": provide context to make your direction clear.   
-  4. "Properly visualize the GDP growth rates of each country": specify result format.  
+  1. "It is a data set that contains the GDP growth rate of several countries from year 2000 to 2015.": provide context to make your direction clear.   
+  2. "Properly visualize the GDP growth rates of each country": specify result format.  
 
 # AI preset
 
