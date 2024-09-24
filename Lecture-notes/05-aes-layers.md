@@ -1,6 +1,15 @@
 # Colors
 
-# AI
+# AI prompts guidelines
+
+
+  1. **Clear direction**: Provide a clear and concise description of the task you want to accomplish.
+  2. **Provide example**: Provide an example of the input data or code you are working with.  
+  3. **Specify output/result format**: Specify the format of the output or result you want to achieve.
+  4. **Divide task**: Divide your task into smaller tasks.
+  5. **Evaluate quality**: Evaluate the quality of the code provided by the AI assistant.
+
+
 
 ```diff
 - In the global environment `gdpGrowth` data frame has the following structure:
@@ -28,3 +37,22 @@ $ `2014 [YR2014]` <dbl> 3.2024538, 0.2962055
 $ `2015 [YR2015]` <dbl> 2.809103, 1.560627
 It is a data set that contains the GDP growth rate of several countries from year 2000 to 2015. Properly visualize the GDP growth rates of each country
 ```
+
+This prompts has three parts:
+
+  1. "In the global environment `gdpGrowth` data frame...": 
+     - "In the global enviroment" tells AI NO NEED to create an example object.  
+     -  Mentioning object name `gdpGrowth` is to ensure the codes can be continuously applied when task is divided.  
+  2. Use `dgpGrowth |> head(2) |> glimpse()` to show first 2 observations of the data frame and its structure: 
+    ```
+    Rows: 2
+    Columns: 20
+    $ `Series Name`   <chr> "GDP growth (annual %)", "GDP growth (annual …
+    $ `Series Code`   <chr> "NY.GDP.MKTP.KD.ZG", "NY.GDP.MKTP.KD.ZG"
+    $ `Country Name`  <chr> "Korea, Rep.", "Japan"
+    $ `Country Code`  <chr> "KOR", "JPN"
+    $ `2000 [YR2000]` <dbl> 9.060833, 2.764648
+    :
+    $ `2014 [YR2014]` <dbl> 3.2024538, 0.2962055
+    $ `2015 [YR2015]` <dbl> 2.809103, 1.560627
+    ```
