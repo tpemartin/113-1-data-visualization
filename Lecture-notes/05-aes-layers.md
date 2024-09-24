@@ -45,6 +45,7 @@ This prompts has three parts:
      -  Mentioning object name `gdpGrowth` is to ensure the codes can be continuously applied when task is divided.  
   2. Use `dgpGrowth |> head(2) |> glimpse()` to show first 2 observations of the data frame and its structure: 
 <blockquote>
+```
 Rows: 2
 Columns: 20
 $ `Series Name`   <chr> "GDP growth (annual %)", "GDP growth (annual …
@@ -55,6 +56,7 @@ $ `2000 [YR2000]` <dbl> 9.060833, 2.764648
 :
 $ `2014 [YR2014]` <dbl> 3.2024538, 0.2962055
 $ `2015 [YR2015]` <dbl> 2.809103, 1.560627
+```
 </blockquote>  
   1. "It is a data set that contains the GDP growth rate of several countries from year 2000 to 2015.": provide context to make your direction clear.   
   2. "Properly visualize the GDP growth rates of each country": specify result format.  
