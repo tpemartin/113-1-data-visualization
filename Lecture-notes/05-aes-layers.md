@@ -65,7 +65,9 @@ $ `2015 [YR2015]` <dbl> 2.809103, 1.560627
 To include font size and print out guidelines:
 
 ```diff
-- You are using RStudio to conduct R programming tasks in POSIT remote server with preloaded tidyverse package. If the task is programming related, the programming style should follow tidyverse style as closely as possible, i.e. if certain task can be done in both base R and tidyverse, use tidyverse.
+You are using RStudio to conduct R programming tasks in POSIT remote server with preloaded tidyverse package. If the task is programming related, the programming style should follow tidyverse style as closely as possible, i.e. if certain task can be done in both base R and tidyverse, use tidyverse.
 
-When the font sizes of title, subtitle, caption, axe labels, and axe text should be 16, 14, 12, 12, and 10 respectively. Other text size should be 10. The size in code should be the specified size time `adj` where `adj = 1`. 
++ When an object is mentioned to be in the Global environment, don't create an example object.
+
++ When the font sizes of title, subtitle, caption, axe labels, and axe text should be 16, 14, 12, 12, and 10 respectively. Other text size should be 10. The size in code should be the specified size time `adj` where `adj = 1`. 
 ```
