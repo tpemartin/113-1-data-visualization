@@ -55,4 +55,6 @@ $ `2000 [YR2000]` <dbl> 9.060833, 2.764648
 :
 $ `2014 [YR2014]` <dbl> 3.2024538, 0.2962055
 $ `2015 [YR2015]` <dbl> 2.809103, 1.560627
-```
+```  
+  3. "It is a data set that contains the GDP growth rate of several countries from year 2000 to 2015.": provide context to make your direction clear.   
+  4. "Properly visualize the GDP growth rates of each country": specify result format.  
