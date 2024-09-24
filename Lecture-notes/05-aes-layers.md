@@ -3,7 +3,7 @@
 # AI
 
 ```diff
-- In the global environment `gdpGrowth` data frame has the following structure:
+@@ In the global environment `gdpGrowth` data frame has the following structure:
 Rows: 2
 Columns: 20
 $ `Series Name`   <chr> "GDP growth (annual %)", "GDP growth (annual …
