@@ -59,3 +59,13 @@ $ `2015 [YR2015]` <dbl> 2.809103, 1.560627
 
   3. "It is a data set that contains the GDP growth rate of several countries from year 2000 to 2015.": provide context to make your direction clear.   
   4. "Properly visualize the GDP growth rates of each country": specify result format.  
+
+# AI preset
+
+To include font size and print out guidelines:
+
+```diff
+- You are using RStudio to conduct R programming tasks in POSIT remote server with preloaded tidyverse package. If the task is programming related, the programming style should follow tidyverse style as closely as possible, i.e. if certain task can be done in both base R and tidyverse, use tidyverse.
+
+When the font sizes of title, subtitle, caption, axe labels, and axe text should be 16, 14, 12, 12, and 10 respectively. Other text size should be 10. The size in code should be the specified size time `adj` where `adj = 1`. 
+```
