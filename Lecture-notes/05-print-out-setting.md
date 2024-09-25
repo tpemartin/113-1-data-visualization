@@ -80,3 +80,27 @@ You are using RStudio to conduct R programming tasks in POSIT remote server with
 
 + When ask to save the graph, set the aspect ratio to be 4:3. The width should be 80% width of an A4 paper unless specified otherwise.  
 ```
+
+# Looker exercise
+
+```r
+# upload to google sheets ----
+gdpGrowth_long <- gdpGrowth_long %>%
+  select(Year, GDP_Growth, `Country Name`)
+
+# Install and load the googlesheets4 package
+install.packages("googlesheets4")
+library(googlesheets4)
+
+# Authenticate your Google account
+gs4_auth()
+
+# Create a new Google Sheet (or specify an existing one)
+sheet <- gs4_create("GDP Growth Data")
+
+# Upload the dataframe to the Google Sheet
+sheet_write(gdpGrowth_long, sheet = sheet, sheet = "Sheet1")
+
+# Upload the dataframe to the Google Sheet
+sheet_write(gdpGrowth_long, ss = sheet, sheet = "Sheet1")
+```
