@@ -83,6 +83,15 @@ You are using RStudio to conduct R programming tasks in POSIT remote server with
 
 # Looker exercise
 
+
+## AI prompt
+
+> How to upload `gdpGrowth_long` data frame to a Google sheets named "GDP Growth" under the sheet named "Asia countries"?
+>
+
+## AI response
+
+
 ```r
 # upload to google sheets ----
 gdpGrowth_long <- gdpGrowth_long %>%
@@ -95,12 +104,10 @@ library(googlesheets4)
 # Authenticate your Google account
 gs4_auth()
 
-# Create a new Google Sheet (or specify an existing one)
-sheet <- gs4_create("GDP Growth Data")
+# Create a new Google Sheet named "GDP Growth" (or access it if it already exists)
+sheet <- gs4_create("GDP Growth")
 
-# Upload the dataframe to the Google Sheet
-sheet_write(gdpGrowth_long, sheet = sheet, sheet = "Sheet1")
+# Upload the dataframe to the sheet named "Asia countries"
+sheet_write(gdpGrowth_long, ss = sheet, sheet = "Asia countries")
 
-# Upload the dataframe to the Google Sheet
-sheet_write(gdpGrowth_long, ss = sheet, sheet = "Sheet1")
 ```
