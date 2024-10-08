@@ -1,17 +1,61 @@
-# Google Looker
+# From ggplot to Google Looker
 
-We can use Google sheets to be data storage and use Looker to visualize the data. 
 
-  1. Save your ggplot data to Google Sheets. 
-  2. Save your ggplot graph and upload to AI chatbot, then ask
+## Steps
 
-## Example
+```mermaid
+flowchart TD
+
+    subgraph Section1 [Static Graph]
+        A[1 Import data] --> B[2 Tidy data]
+        B --> C[3 ggplot]
+    end
+
+    subgraph Section2 [Interactive Graph]
+        B --> D[1 Prepare Google Sheet data]
+        D --> E[2 Connect to Looker]
+        E --> F[3 Looker chart setup]
+    end
+
+    C -.-> G[AI]
+    G -.-> F
+
+
+```
+
+```diff
+For the static graph, 
+- Step 2: Double check the classes of the variables in the tidy data.  
+```
+
+
+> Each step can resort to AI's help if needed.
+
+
+### R template 
+
+
+```r
+# Step 1: Import data
+
+# Step 2: Tidy data, double check the classes of the variables
+
+# Step 3: Visualize the data in R, including saving the reference graph for Looker
+
+# Step 4: Export the tidy data to Google Sheet
+
+```
+
+### AI preset
+
+
+
+### Example 1
 
 不同首站抵達地的年度總人數
   - [Google Sheet： total_people_by_country](https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=806824860#gid=806824860)
 
 ![不同首站抵達地的年度總人數](../img/不同首站抵達地的年度總人數.png)
-
 
 ## AI prompt
 
