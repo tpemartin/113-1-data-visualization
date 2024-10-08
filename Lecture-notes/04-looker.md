@@ -2,7 +2,9 @@
 
   - [Looker Studio](https://lookerstudio.google.com/)
 
+<div>
 <iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/9d82030f-08db-465d-9df8-824cd1910412/page/3uaEE" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+</div>
 
 ## 1. Steps
 
