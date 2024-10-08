@@ -1,7 +1,12 @@
-# From ggplot to Google Looker
+# From R to Google Looker
+
+  - [Looker Studio](https://lookerstudio.google.com/)
 
 
-## Steps
+## 1. Steps
+
+> Use R to prepare tidy data for Looker Studio as well as its reference graph -- if needed.
+
 
 ```mermaid
 flowchart TD
@@ -27,21 +32,7 @@ From **static graph** step 2 to **interactive graph** step 1,
 > ❗ Always double check the classes of the variables in the tidy data.  
 
 
-### R template 
-
-
-```r
-# Step 1: Import data
-
-# Step 2: Tidy data, double check the classes of the variables
-
-# Step 3: Visualize the data in R, including saving the reference graph for Looker
-
-# Step 4: Export the tidy data to Google Sheet
-
-```
-
-## Add Data
+## Connect Data
 
   - How to connect a Google Sheet to Looker Studio?
   
