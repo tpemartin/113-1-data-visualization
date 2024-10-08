@@ -12,7 +12,7 @@ flowchart TD
     end
 
     subgraph Section2 [Interactive Graph]
-        B -->|googlesheets4:write_sheet\n:exclamation:| D[1 Prepare Google Sheet data]
+        B -->|googlesheets4:write_sheet ❗ | D[1 Prepare Google Sheet data]
         D --> E[2 Connect to Looker]
         E --> F[3 Looker chart setup]
     end
