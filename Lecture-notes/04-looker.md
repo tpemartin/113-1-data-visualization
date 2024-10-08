@@ -23,10 +23,16 @@ flowchart TD
 
 ```
 
-```diff
-For the static graph, 
-- Step 2: Double check the classes of the variables in the tidy data.  
-```
+<style>
+.alert {
+    color: red;
+}
+</style>
+
+<div class="alert">
+Always double check the classes of the variables in the tidy data.  
+</div>
+
 
 
 > Each step can resort to AI's help if needed.
