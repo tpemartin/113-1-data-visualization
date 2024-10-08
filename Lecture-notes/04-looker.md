@@ -12,7 +12,7 @@ flowchart TD
     end
 
     subgraph Section2 [Interactive Graph]
-        B --> D[1 Prepare Google Sheet data]
+        B -->|googlesheets4:write_sheet\n:exclamation:| D[1 Prepare Google Sheet data]
         D --> E[2 Connect to Looker]
         E --> F[3 Looker chart setup]
     end
@@ -23,19 +23,8 @@ flowchart TD
 
 ```
 
-<style>
-.alert {
-    color: red;
-}
-</style>
-
-<div class="alert">
-Always double check the classes of the variables in the tidy data.  
-</div>
-
-
-
-> Each step can resort to AI's help if needed.
+From **static graph** step 2 to **interactive graph** step 1, 
+> ❗ Always double check the classes of the variables in the tidy data.  
 
 
 ### R template 
@@ -51,6 +40,14 @@ Always double check the classes of the variables in the tidy data.
 # Step 4: Export the tidy data to Google Sheet
 
 ```
+
+## Add Data
+
+  - How to connect a Google Sheet to Looker Studio?
+  
+![](../img/2024-10-08-14-43-42.png)
+
+> :exclamation: 如果發現Worksheet清單資料不正確，請重新refresh browser，以確保資料的即時性。
 
 ### AI preset
 
