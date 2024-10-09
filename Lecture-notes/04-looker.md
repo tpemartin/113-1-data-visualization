@@ -21,7 +21,7 @@ flowchart TD
 
     subgraph Section2 [Interactive Graph]
         B -->|googlesheets4:write_sheet ❗ | D[1 Prepare Google Sheet data]
-        D --> E[2 Connect to Looker]
+        D -->|❗❗| E[2 Connect to Looker]
         E --> F[3 Looker chart setup]
     end
 
@@ -32,7 +32,8 @@ flowchart TD
 ```
 
 From **static graph** step 2 to **interactive graph** step 1, 
-> ❗ Always double check the classes of the variables in the tidy data.  
+> ❗ Always double check the classes of the variables in the tidy data. (use `glimpses()`)
+> ❗❗ Always double check the format of the columns in the Google Sheet before you connect to Looker.  
 
 
 ## Connect Data
