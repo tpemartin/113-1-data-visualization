@@ -13,11 +13,11 @@ tidy_flight_data <- flightDestinationRaw %>%
                values_to = "Counts") %>%
   mutate(Counts = as.numeric(gsub(",", "", Counts))) # Convert to numeric after pivoting
 
-googlesheets4::write_sheet(
-  tidy_flight_data,
-  "https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=0#gid=0",
-  sheet = "flightDestinationAsia"
-)
+# googlesheets4::write_sheet(
+#   tidy_flight_data,
+#   "https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=0#gid=0",
+#   sheet = "flightDestinationAsia"
+# )
 
 library(tidyverse)
 
@@ -26,11 +26,11 @@ tidy_flight_data <- tidy_flight_data %>%
   mutate(
          Year = as.Date(paste0(Year, "-01-01")))  # Convert Year to Date class
 
-googlesheets4::write_sheet(
-  tidy_flight_data,
-  "https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=0#gid=0",
-  sheet = "flightDestinationAsia-looker"
-)
+# googlesheets4::write_sheet(
+#   tidy_flight_data,
+#   "https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=0#gid=0",
+#   sheet = "flightDestinationAsia-looker"
+# )
 
 # Step 2: Create the time trend plot
 ggplot(tidy_flight_data, aes(x = Year, y = Counts, color = 細分)) +
