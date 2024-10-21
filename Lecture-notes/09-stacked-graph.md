@@ -10,18 +10,7 @@ Stacked Area Chart
 |:--:| :--: | :--: |
 | Stacked Area Chart | Stacked Column Chart | Stacked Bar Chart |
 
-  * 堆疊的最低層和最高層的變化趨勢最容易判讀。
-  * 總高度有"總計"的概念。
-
-
-Stacked Column Chart 
-
-
-
-Stacked Bar Chart 
-
-<img src="../img/stacked-bar-chart.svg" width="20%"/>
-
+ 
   * 底層的資料最容易判讀（儘量留給故事主角類別）。
   * 總高度有"總計"的概念。
 
@@ -31,17 +20,9 @@ Stacked Bar Chart
 
 ## 100% Stacked graph
 
-100% Stacked Area Chart
-
-<img src="../img/percentage-stacked-area-chart.svg" width="20%"/>
-
-100% Stacked Column Chart
-
-<img src="../img/percentage-stacked-column-chart.svg" width="20%"/>
-
-100% Stack Bar Chart
-
-<img src="../img/percentage-stacked-bar-chart.svg" width="20%">
+| <img src="../img/percentage-stacked-area-chart.svg" width="80%"/> | <img src="../img/percentage-stacked-column-chart.svg" width="80%"/> | <img src="../img/percentage-stacked-bar-chart.svg" width="80%"/> | 
+|:--:| :--: | :--: |
+| 100% Stacked Area Chart | 100% Stacked Column Chart | 100% Stacked Bar Chart |
 
 
   * 每個類別的資料長度都是100%。  
