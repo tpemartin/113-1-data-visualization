@@ -6,10 +6,9 @@
 
 Stacked Area Chart
 
-<img src="../img/stacked-area.svg" width="20%"/>
-
-
-
+| <img src="../img/stacked-area.svg" width="20%"/> |
+|:--:|
+| Stacked Area Chart |
 
 
 Stacked Column Chart 
@@ -39,7 +38,7 @@ Stacked Bar Chart
 
 100% Stack Bar Chart
 
-<img src="../img/percentage-stacked-bar-chart.svg", width="20%">
+<img src="../img/percentage-stacked-bar-chart.svg" width="20%">
 
 
   * 每個類別的資料長度都是100%。  
