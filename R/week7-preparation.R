@@ -11,7 +11,8 @@ flightDestinationAsia <-
     `細分` = factor(`細分`)
   ) |>
   dplyr::filter(
-    `細分` !="亞洲合計 Total"
+    `細分` !="亞洲合計 Total",
+    `Year` <= "2020-01-01"
   )
 
 library(ggplot2)
@@ -80,3 +81,45 @@ ggplot(data = tidy_flightDestinationAsia, aes(x = Year, y = Total_Counts, color 
   theme_minimal()
 
 
+# Create the area chart
+ggplot(data = tidy_flightDestinationAsia, aes(x = Year, y = Total_Counts, 
+                                              fill = `細分2`)) +
+  geom_area(color="white") +
+  labs(title = "Counts Trend by 細分",
+       x = "Year",
+       y = "Counts",
+       color = "細分") +
+  theme_minimal()
+
+# 100% Stacked Area Chart
+ggplot(data = tidy_flightDestinationAsia, aes(x = Year, y = Total_Counts, 
+                                              fill = `細分2`)) +
+  geom_area(position = "fill", color="white") +
+  labs(title = "Counts Trend by 細分",
+       x = "Year",
+       y = "Counts",
+       color = "細分") +
+  theme_minimal()
+
+# reorder `細分2` levels based on story telling
+tidy_flightDestinationAsia2 <- tidy_flightDestinationAsia %>%
+  mutate(`細分2` = factor(`細分2`, 
+                        levels= c( "中國大陸China", "澳門Macao", "其他", "香港Hong Kong", "日本Japan")
+                        ))
+
+# 100% Stacked Area Chart
+ggplot(data = tidy_flightDestinationAsia2, aes(x = Year, y = Total_Counts, 
+                                              fill = `細分2`)) +
+  geom_area(position = "fill", color="white") +
+  labs(title = "Counts Trend by 細分",
+       x = "Year",
+       y = "Counts",
+       color = "細分") +
+  theme_minimal()
+
+# Create a ordered sequence field for Looker
+tidy_flightDestinationAsia2 <-
+  tidy_flightDestinationAsia2 |>
+  mutate(
+    `細分2order` = as.integer(`細分2`)
+  )
