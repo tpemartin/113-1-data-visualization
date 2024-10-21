@@ -2,6 +2,37 @@
 
 > :exclamation: 減少視覺呈現的類別數量（包含"其他"類，盡量不超過5類），讓觀眾更容易理解故事。
 
+## Example
+
+### 引入及初步處理資料
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/09a50137f0c8aa11df61ff5b3e519bb2b57f5f35/R/week7-preparation.R#L2-L15>
+
+
+繪圖  
+<https://github.com/tpemartin/113-1-data-visualization/blob/09a50137f0c8aa11df61ff5b3e519bb2b57f5f35/R/week7-preparation.R#L17-L28>
+
+目前圖例順序
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/09a50137f0c8aa11df61ff5b3e519bb2b57f5f35/R/week7-preparation.R#L42>
+
+### 調整圖例順序
+
+以總人數排序
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/09a50137f0c8aa11df61ff5b3e519bb2b57f5f35/R/week7-preparation.R#L44-L48>
+
+### 減少類別
+
+減少成前四名，及"其他"類
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/09a50137f0c8aa11df61ff5b3e519bb2b57f5f35/R/week7-preparation.R#L52-L67>
+
+繪圖
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/09a50137f0c8aa11df61ff5b3e519bb2b57f5f35/R/week7-preparation.R#L74-L80>
+
+
 ## Stacked graph （堆疊圖）
 
 分成一般的Stacked graph和100% Stacked graph的變形。
