@@ -6,7 +6,7 @@
 
 Stacked Area Chart
 
-| <img src="../img/stacked-area.svg" width="20%"/> | <img src="../img/stacked-column-chart.svg" width="20%"/> | <img src="../img/stacked-bar-chart.svg" width="20%"/> |
+| <img src="../img/stacked-area.svg" width="80%"/> | <img src="../img/stacked-column-chart.svg" width="80%"/> | <img src="../img/stacked-bar-chart.svg" width="80%"/> |
 |:--:| :--: | :--: |
 | Stacked Area Chart | Stacked Column Chart | Stacked Bar Chart |
 
