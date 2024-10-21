@@ -123,3 +123,8 @@ tidy_flightDestinationAsia2 <-
   mutate(
     `細分2order` = as.integer(`細分2`)
   )
+
+googlesheets4::write_sheet(
+  tidy_flightDestinationAsia2,
+  "https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=1550447151#gid=1550447151",
+                          sheet="flightDestinationAsia-looker-2")
