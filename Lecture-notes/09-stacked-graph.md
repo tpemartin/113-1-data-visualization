@@ -5,6 +5,7 @@
 ## 一般的Stacked graph
 
 Stacked Area Chart
+![](../img/stacked-area.svg)
 
 <svg width="20%" height="100%" viewBox="0 0 48 36" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
     <g fill="none">
