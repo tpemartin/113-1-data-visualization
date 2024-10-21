@@ -1,4 +1,8 @@
-# Stacked graph （堆疊圖）
+# Categorical variable and Stacked graph
+
+> :exclamation: 減少視覺呈現的類別數量（包含"其他"類，盡量不超過5類），讓觀眾更容易理解故事。
+
+## Stacked graph （堆疊圖）
 
 分成一般的Stacked graph和100% Stacked graph的變形。
 
