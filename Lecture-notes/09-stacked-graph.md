@@ -6,14 +6,17 @@
 
 Stacked Area Chart
 
-| <img src="../img/stacked-area.svg" width="20%"/> |
-|:--:|
-| Stacked Area Chart |
+| <img src="../img/stacked-area.svg" width="20%"/> | <img src="../img/stacked-column-chart.svg" width="20%"/> | <img src="../img/stacked-bar-chart.svg" width="20%"/> |
+|:--:| :--: | :--: |
+| Stacked Area Chart | Stacked Column Chart | Stacked Bar Chart |
+
+  * 堆疊的最低層和最高層的變化趨勢最容易判讀。
+  * 總高度有"總計"的概念。
 
 
 Stacked Column Chart 
 
-<img src="../img/stacked-column-chart.svg" width="20%"/>
+
 
 Stacked Bar Chart 
 
