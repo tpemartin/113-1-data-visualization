@@ -95,27 +95,33 @@ ggplot(data = tidy_flightDestinationAsia, aes(x = Year, y = Total_Counts,
 ggplot(data = tidy_flightDestinationAsia, aes(x = Year, y = Total_Counts, 
                                               fill = `細分2`)) +
   geom_area(position = "fill", color="white") +
-  labs(title = "Counts Trend by 細分",
+  labs(title = "Counts Trend by 細分2",
+      subtitle = "tidy_flightDestinationAsia",
        x = "Year",
        y = "Counts",
-       color = "細分") +
-  theme_minimal()
+       color = "細分2") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
 
 # reorder `細分2` levels based on story telling
 tidy_flightDestinationAsia2 <- tidy_flightDestinationAsia %>%
   mutate(`細分2` = factor(`細分2`, 
-                        levels= c( "中國大陸China", "澳門Macao", "其他", "香港Hong Kong", "日本Japan")
+                        levels= c( "中國大陸China", "香港Hong Kong", "澳門Macao", "其他", "日本Japan")
                         ))
 
 # 100% Stacked Area Chart
 ggplot(data = tidy_flightDestinationAsia2, aes(x = Year, y = Total_Counts, 
                                               fill = `細分2`)) +
   geom_area(position = "fill", color="white") +
-  labs(title = "Counts Trend by 細分",
+  labs(title = "Counts Trend by 細分2",
+       subtitle = "tidy_flightDestinationAsia2",
        x = "Year",
        y = "Counts",
-       color = "細分") +
-  theme_minimal()
+       color = "細分2") +
+  theme_minimal() +
+  theme(legend.position = "bottom") -> g2
+
+
 
 # Create a ordered sequence field for Looker
 tidy_flightDestinationAsia2 <-
@@ -128,3 +134,23 @@ googlesheets4::write_sheet(
   tidy_flightDestinationAsia2,
   "https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=1550447151#gid=1550447151",
                           sheet="flightDestinationAsia-looker-2")
+
+adj <- 2
+
+# Assuming g2 is the original ggplot object
+adjustable_g2 <- g2 + 
+  theme(
+    plot.title = element_text(size = 16 * adj),
+    plot.subtitle = element_text(size = 14 * adj),
+    plot.caption = element_text(size = 12 * adj),
+    axis.title.x = element_text(size = 12 * adj),
+    axis.title.y = element_text(size = 12 * adj),
+    axis.text.x = element_text(size = 10* adj),
+    axis.text.y = element_text(size = 10* adj)
+  )
+
+# Save the adjustable plot
+ggsave("adjustable_g2_plot.png", plot = adjustable_g2,
+       width = 8 * 0.8, height = 6 * 0.8, 
+       units = "in", dpi = 300, 
+       device = "png")
