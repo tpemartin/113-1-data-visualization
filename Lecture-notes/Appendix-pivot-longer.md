@@ -20,3 +20,7 @@ $ `$100-150k`          <dbl> 109, 59, 39, 792, 17, 723, 48, 81, 11, 87, 753, 49,
 $ `>150k`              <dbl> 84, 74, 53, 633, 18, 414, 54, 78, 6, 151, 634, 42, 6, 46, 12, 41…
 $ `Don't know/refused` <dbl> 96, 76, 54, 1489, 116, 1529, 37, 339, 37, 162, 1328, 69, 22, 73,…
 ```
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/a5f603bd94e1bc003f27d4041d91dc48cbc699f2/R/appendix-pivot-longer.R#L12-L13>
+
+  - `aes()`: 裡的mapping都要出現在`tidy_relig_income`的欄位。
