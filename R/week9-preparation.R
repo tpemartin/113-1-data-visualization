@@ -67,5 +67,5 @@ output_height <- output_width * (3 / 4) # Aspect ratio 4:3
 ggsave("img/歷年台灣出國首站抵達亞洲國家之各國人次佔比.png",
   plot = adjustable_plot,
   width = output_width, height = output_height, dpi = 300,
-  device = "png"
+  device = "png", bg="white"
 )
