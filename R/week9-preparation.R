@@ -23,7 +23,7 @@ tidy_data <- tidy_data |>
 
 # Create the 100% stacked bar graph
 
-adj <- 3
+adj <- 1
 adjustable_plot <- ggplot(tidy_data, aes(x = Year, y = Total_Counts, fill = 細分2)) +
   geom_area( position = "fill") +
   scale_y_continuous(
@@ -36,8 +36,8 @@ adjustable_plot <- ggplot(tidy_data, aes(x = Year, y = Total_Counts, fill = 細�
     "日本Japan" = "#7DA0C7",      # Muted Blue (Secondary Role)
     "其他" = "#D0D0D0"            # Gray (Background Role)
   )) +
-  labs(title = "歷年台灣出國首站抵達亞洲國家之各國人次佔比",
-       subtitle = "單位: 百分比（分母為首站亞洲抵達國家總人次）",
+  labs(title = "2002-19台灣出國首站抵達亞洲國家人次佔比",
+       subtitle = "單位: 百分比（分母為全亞洲國家首站抵達總人次）",
        caption = "開放政府資料平台",
        x = NULL,
        y = NULL) +
