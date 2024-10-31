@@ -13,7 +13,7 @@
   
 > :exclamation: 但在資料視覺化中，資料值越高，color value越低，顏色越暗。
 
-## 顏色數值
+## 顏色空間
 
   - 顏色數值的表示法有很多種，最常見的是RGB和Hexadecimal。
   - RGB: 三原色的比例，範圍是0~255。如：rgb(0, 0, 255)表示純藍色。
@@ -24,7 +24,7 @@
 
 ## 數值與顏色
 
-  1. 數值及ordered factor有大小之分，所以使用Color Value的差異來表示數值的大小。**數值越大**，Value越低，**顏色越暗**。  
+  1. 數值及ordered factor有大小之分，所以使用Color Value的差異來表示數值的大小。**資料數值越大**，Color Value越低，**顏色越暗**。  
   2. 兩極化的數值，可以使用兩極化的顏色，如兩黨支持率，在極端值的顏色最暗，中間值的顏色最低。
   3. 在空間中，由數值來進行填色除了使用Value的差異，也可以使用兩個hue但不同value來建立調色盤（後續在地圖講到），這樣可以讓相鄰的區域有明顯的差異，如地圖上的海拔高度。
    
@@ -38,8 +38,8 @@ For numerical and ordered factor variables, large color value is for small data 
    
 ## 色溫與主配角
 
-    1. 色溫：暖色系和冷色系。暖色系有紅、橙、黃，冷色系有綠、藍、紫。暖色系的顏色會讓人感到溫暖，冷色系的顏色會讓人感到涼爽。
-    2. 主配角：主要的資訊用暖色系，次要的資訊用冷色系。
+    1. 色溫：暖色系和寒色系。暖色系有紅、橙、黃，寒色系有綠、藍、紫。暖色系的顏色會讓人感到溫暖，寒色系的顏色會讓人感到涼爽。
+    2. 主配角：主要的資訊用暖色系，次要的資訊用寒色系。
    
 ![](https://www.colorpsychology.org/wp-content/uploads/2018/09/warm-cool-color-list-2-300x280.jpg)
 
@@ -53,14 +53,13 @@ For numerical and ordered factor variables, large color value is for small data 
 
 ## 類別與顏色
 
-Common color schemes: supplementary, complementary, analogous, triadic, tetradic, monochromatic, achromatic.
+色彩學裡的color schemes是很好的選色依據。
 
-  - Color schemes: <https://www.webascender.com/blog/understanding-color-schemes-choosing-colors-for-your-website/>
-
-  1. 其他美學元素已呈現類別，如形狀、大小、線條、位置等，則不使用顏色變化。
-  2. 截然不同類別，Hue的差異越大越好。 
-  3. 相似類別（有大類又有小類時），可以固定Hue用Saturation和Value的差異形成子類，但有時也可以使用相近的Hue, 即analogous color。
-  4. 類別若有主配角之分，主角是暖色系，配角是冷色系。
+  1. Color schemes: <https://www.webascender.com/blog/understanding-color-schemes-choosing-colors-for-your-website/> Common color schemes: supplementary, complementary, analogous, triadic, tetradic, monochromatic, achromatic.
+  2. 其他美學元素已呈現類別，如形狀、大小、線條、位置等，則不使用顏色變化。
+  3. 截然不同類別，Hue的差異越大越好。 
+  4. 相似類別（有大類又有小類時），可以固定Hue用Saturation和Value的差異形成子類，但有時也可以使用相近的Hue, 即analogous color。
+  5. 類別若有主配角之分，主角是暖色系，配角是寒色系。
 
    
 <details>
