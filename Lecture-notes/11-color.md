@@ -20,9 +20,9 @@
   - Hexadecimal: 用16進位表示，範圍是00~FF。如：#0000FF表示純藍色。
   - 顏色數值的表示法，可以用[Color Picker](https://www.google.com/search?q=color+picker)來找到。
 
+## 顏色與資料視覺化
 
-
-## 數值與顏色
+### 1. 資料數值與color value
 
   1. 數值及ordered factor有大小之分，所以使用Color Value的差異來表示數值的大小。**資料數值越大**，Color Value越低，**顏色越暗**。  
   2. 兩極化的數值，可以使用兩極化的顏色，如兩黨支持率，在極端值的顏色最暗，中間值的顏色最低。
@@ -36,7 +36,7 @@ For numerical and ordered factor variables, large color value is for small data 
 
  </details>
    
-## 色溫與主配角
+### 2.主配角與色溫
 
     1. 色溫：暖色系和寒色系。暖色系有紅、橙、黃，寒色系有綠、藍、紫。暖色系的顏色會讓人感到溫暖，寒色系的顏色會讓人感到涼爽。
     2. 主配角：主要的資訊用暖色系，次要的資訊用寒色系。
@@ -51,12 +51,12 @@ For numerical and ordered factor variables, large color value is for small data 
    
 </details>
 
-## 類別與顏色
+### 3.類別與色像hue
 
 色彩學裡的color schemes是很好的選色依據。
 
   1. Color schemes: <https://www.webascender.com/blog/understanding-color-schemes-choosing-colors-for-your-website/> Common color schemes: supplementary, complementary, analogous, triadic, tetradic, monochromatic, achromatic.
-  2. 其他美學元素已呈現類別，如形狀、大小、線條、位置等，則不使用顏色變化。
+  2. 若其他美學元素已呈現類別，如形狀、大小、線條、位置等，則不使用顏色美學在ggplot中。
   3. 截然不同類別，Hue的差異越大越好。 
   4. 相似類別（有大類又有小類時），可以固定Hue用Saturation和Value的差異形成子類，但有時也可以使用相近的Hue, 即analogous color。
   5. 類別若有主配角之分，主角是暖色系，配角是寒色系。
@@ -71,16 +71,18 @@ When apply color to factor variable (but excluding ordered factor), ask for what
 
 </details>
 
-## 色彩飽合度
+### 4.視線與色彩飽合度
 
-    1. 顏色飽合度：飽和度越高，顏色越鮮豔，飽和度越低，顏色越灰暗。
-    2. 來自相同類別變數的顏色，飽和度應盡量相同。
+色彩飽合度指得是眼睛感受逼的色彩鮮豔程度，越鮮艷，越吸睛。  
+1. 顏色飽合度：飽和度越高，顏色越鮮豔，飽和度越低，顏色越灰暗。  
+2. 來自相同類別變數的顏色，飽和度應盡量相同。  
+3. Color value是一個顏色的明暗程度，飽和度是一個顏色的鮮豔程度。明暗度會影響飽和度的感受，但較暗的顏色不一定飽和度會比一個較明亮的顏色低。
 
 <details>
 
 <summary>AI prompts</summary>
 
-Colors picked for the same factor variable (excluding ordered factor variable) should have the same saturation -- or as similar as possible. Ordered factor variable should different color values for different levels.
+Colors picked for the same factor variable (excluding ordered factor variable) should have the same saturation -- or as similar as possible. However, ordered factor variable should have different color values for different levels.
 
 </details>
 
