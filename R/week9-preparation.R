@@ -25,7 +25,7 @@ tidy_data <- tidy_data |>
 
 # Create the 100% stacked bar graph
 
-adj <- 1
+adj <- 3
 adjustable_plot <- ggplot(tidy_data, aes(x = Year, y = Total_Counts, fill = 細分2)) +
   geom_area(position = "fill") +
   scale_y_continuous(
