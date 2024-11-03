@@ -71,7 +71,7 @@ When apply color to factor variable (but excluding ordered factor), ask for what
 
 </details>
 
-### 4.視線與色彩飽合度
+### 4.視線與色彩飽合度(Saturation)
 
 色彩飽合度指得是眼睛感受逼的色彩鮮豔程度，越鮮艷，越吸睛。  
 1. 顏色飽合度：飽和度越高，顏色越鮮豔，飽和度越低，顏色越灰暗。  
