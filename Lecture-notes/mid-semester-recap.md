@@ -8,10 +8,11 @@
   4. The basic three in Looker studio: dimension, metric, and breakdown dimension. 
   5. Categorical data: the importance of factor level order in R and the importance of sorting in Looker Studio.
 
+> :exclamation: We lay out the plan and ask AI for help if necessary.
 
 ## 亞洲首站抵達地點
 
-繪製歷年不同亞洲首站抵達地點人次比例的面積圖（area chart）。
+繪製歷年不同亞洲首站抵達地點人次比例的面積堆疊圖（stacked area chart）。
 
  1. [原始資料引入](https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=1662522658#gid=1662522658)  
  2. Tidy data: 
