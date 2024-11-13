@@ -25,3 +25,10 @@ Once you have your API key, invoke the registration function: `register_stadiama
 
 [![](../img/2024-11-13-11-19-22.png)](https://lookerstudio.google.com/u/0/reporting/9d82030f-08db-465d-9df8-824cd1910412/page/p_91frx26vmd)
 
+## Exercise
+
+Ubereats 2024-9-27 with rating color
+
+  - R script: <https://github.com/tpemartin/113-1-data-visualization/blob/main/R/week10-in-class.R>  
+  - Google sheets: <https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=35887012#gid=35887012>  
+  - Looker studio: <https://lookerstudio.google.com/u/0/reporting/9d82030f-08db-465d-9df8-824cd1910412/page/p_2v0oa3iwmd>
