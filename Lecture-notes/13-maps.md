@@ -2,6 +2,8 @@
 
 ## ggmap package
 
+<https://cran.r-project.org/web/packages/ggmap/readme/README.html>
+
 ### 1. Stadia maps
 
 You can explore the map centering Taiwan through
