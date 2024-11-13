@@ -10,11 +10,11 @@ write_csv(uberEats, "data/uberEats.csv")
 # import the data from the csv file
 uberEats <- read_csv("data/uberEats.csv")
 
-glimpse(uberEats)
+glimpse(uberEats[1:2,])
 
 # Plot shops on a map based on shopLat and shopLng 
-ggplot(uberEats, aes(x = shopLng, y = shopLat)) +
-  geom_point() +
+ggplot() +
+  geom_point(data = uberEats, mapping = aes(x = shopLng, y = shopLat)) +
   coord_fixed() + # make the aspect ratio 1:1 in the plot
   theme_minimal() +
   labs(title = "Shops on UberEats",
@@ -34,8 +34,10 @@ bbox <- c(
 bbox <- bbox + c(-0.1, -0.1, 0.1, 0.1)
 
 # Get the map of the bbox from stadia map
-map <- get_stadiamap(bbox, zoom = 7)
+map <- get_stadiamap(bbox, zoom = 7, 
+                     maptype="stamen_toner")
 
+ggmap(map)
 # Plot the with the complement color to green. 
 # The color should be muted and alpha should be 0.3
 ggmap(map) +
