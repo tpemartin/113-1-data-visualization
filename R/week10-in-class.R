@@ -49,3 +49,29 @@ gsUrl <- "https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-d
 # upload to google sheet under sheet name "ubereats_sanxia_looker"
 googlesheets4::write_sheet(ubereats_sanxia_select, gsUrl, 
 sheet = "ubereats_sanxia_looker")
+
+# do the same for township "新店"
+ubereats_xindian <- ubereats %>%
+  dplyr::filter(str_detect(township, "新店"))
+
+bbox_xindian <- c(left = min(ubereats_xindian$lon) - 0.01,
+                  bottom = min(ubereats_xindian$lat) - 0.01,
+                  right = max(ubereats_xindian$lon) + 0.01,
+                  top = max(ubereats_xindian$lat) + 0.01)
+
+xindian_map <- get_stadiamap(bbox = bbox_xindian, zoom = 14, maptype = "stamen_toner_lite")
+
+ggmap(xindian_map) +
+  geom_point(data = ubereats_xindian, aes(x = lon, y = lat), color = "red", size = 2) +
+  theme_minimal()
+
+# export relevant columns to google sheet
+ubereats_xindian$location <- paste(ubereats_xindian$lat, ubereats_xindian$lon, sep = ",")
+ubereats_xindian$tooltip <- paste(ubereats_xindian$name, ubereats_xindian$rating, sep = ": ")
+
+ubereats_xindian_select <- ubereats_xindian %>%
+  dplyr::select(location, tooltip, rating)
+
+# upload to google sheet under sheet name "ubereats_xindian_looker"
+googlesheets4::write_sheet(ubereats_xindian_select, gsUrl,
+sheet = "ubereats_xindian_looker")
