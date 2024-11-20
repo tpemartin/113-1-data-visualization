@@ -40,3 +40,4 @@ ggplot() +
     data = shp_crop,
     mapping = aes(fill = pop)
   )
+
