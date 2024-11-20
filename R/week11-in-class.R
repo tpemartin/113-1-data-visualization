@@ -41,3 +41,14 @@ ggplot() +
     mapping = aes(fill = pop)
   )
 
+# simplify shp_crop simple feature data frame
+library(sf)  # Ensure the sf package is available
+
+tidy_simplified_shp_crop <- st_simplify(shp_crop, preserveTopology = TRUE, dTolerance = 1)
+
+# Plot the simplified shapefile
+ggplot() +
+  geom_sf(
+    data = tidy_simplified_shp_crop,
+    mapping = aes(fill = pop)
+  )
