@@ -23,7 +23,8 @@ ggplot() +
   ) +
   labs(
     title = "Taiwan counties"
-  )
+  ) +
+  theme_void()
 
 ## Underlay ggmap on Taiwan sf plot ----
 
@@ -59,69 +60,25 @@ ggmap(tw_map) +
   ) +
   labs(
     title = "Taiwan counties overlay on Stadia map",
-    subtitle="no crs adjustment"
-  )
-
-# Adjust the crs of Taiwan sf to EPSG:3857
-tw_shp_crop_3857 <-
-  tw_shp_crop |>
-  st_set_crs(3857) |>
-  st_transform(crs = 3857)
-
-ggplot() +
-  geom_sf(
-    data = tw_shp_crop_3857
-  )
-
-# plot the Taiwan map with crs of EPSG:3857
-ggmap(tw_map) +
-  geom_polygon(
-    data = tw_shp_crop_3857,
-    fill = "blue",
-    color = "white",
-    alpha = 0.5
+    subtitle = "no crs adjustment"
   ) +
+  theme_void()
+
+# 取得修訂過的地圖
+revised_map <- ntpudatavis::ggmap_bbox(tw_map)
+
+# 繪製地圖並疊加簡單特徵數據
+ggmap(revised_map) +
+  geom_sf(
+    data = st_transform(tw_shp_crop, crs = 3857),
+    fill = "blue", color = "white", alpha = 0.3,
+    inherit.aes = FALSE
+  ) +
+  theme_void() +
   labs(
     title = "Taiwan counties overlay on Stadia map",
-    subtitle="crs adjustment to EPSG:3857"
+    subtitle = "crs adjustment to EPSG:3857"
   )
-
-# hacking bbox of ggmap ------
-
-# Define a function to fix the bbox to be in EPSG:3857
-ggmap_bbox <- function(map) {
-  if (!inherits(map, "ggmap")) stop("map must be a ggmap object")
-  # Extract the bounding box (in lat/lon) from the ggmap to a numeric vector, 
-  # and set the names to what sf::st_bbox expects:
-  map_bbox <- setNames(unlist(attr(map, "bb")), 
-                       c("ymin", "xmin", "ymax", "xmax"))
-
-  # Coonvert the bbox to an sf polygon, transform it to 3857, 
-  # and convert back to a bbox (convoluted, but it works)
-  bbox_3857 <- st_bbox(st_transform(st_as_sfc(st_bbox(map_bbox, crs = 4326)), 3857))
-
-  # Overwrite the bbox of the ggmap object with the transformed coordinates 
-  attr(map, "bb")$ll.lat <- bbox_3857["ymin"]
-  attr(map, "bb")$ll.lon <- bbox_3857["xmin"]
-  attr(map, "bb")$ur.lat <- bbox_3857["ymax"]
-  attr(map, "bb")$ur.lon <- bbox_3857["xmax"]
-  map
-}
-
-# Use the function:
-tw_map_hack <- ggmap_bbox(tw_map)
-
-ggmap(tw_map_hack) + 
-  coord_sf(crs = st_crs(3857)) + # force the ggplot2 map to be in 3857
-  geom_sf(
-    data = tw_shp_crop |>
-           st_transform(crs = 3857),
-    fill = "blue",
-    color = "white",
-    alpha = 0.5,
-    inherit.aes = FALSE
-  )
-
 
 # OSM data ----
 library(osmdata)
