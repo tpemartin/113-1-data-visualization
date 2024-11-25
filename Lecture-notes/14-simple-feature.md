@@ -125,3 +125,61 @@ ggplot()+
 object.size(simplified_shape)
 
 ```
+
+## Overlay ggmap
+
+  - <https://stackoverflow.com/questions/47749078/how-to-put-a-geom-sf-produced-map-on-top-of-a-ggmap-produced-raster>
+
+The map from ggmap use different bbox definition from the bbox used in simple feature plotting. We need to hack the map's bbox definition so that it can fit to use in the coordinate system of simple feature plotting. On top of that ggmap's map are in EPSG:3857 crs. We need to transform the simple feature data to EPSG:3857 crs before overlaying it on the ggmap.
+
+
+<details>
+<summary> ggmap hacking code </summary>
+
+```r
+# Define a function to fix the bbox to be in EPSG:3857
+ggmap_bbox <- function(map) {
+  if (!inherits(map, "ggmap")) stop("map must be a ggmap object")
+  # Extract the bounding box (in lat/lon) from the ggmap to a numeric vector, 
+  # and set the names to what sf::st_bbox expects:
+  map_bbox <- setNames(unlist(attr(map, "bb")), 
+                       c("ymin", "xmin", "ymax", "xmax"))
+
+  # Coonvert the bbox to an sf polygon, transform it to 3857, 
+  # and convert back to a bbox (convoluted, but it works)
+  bbox_3857 <- st_bbox(st_transform(st_as_sfc(st_bbox(map_bbox, crs = 4326)), 3857))
+
+  # Overwrite the bbox of the ggmap object with the transformed coordinates 
+  attr(map, "bb")$ll.lat <- bbox_3857["ymin"]
+  attr(map, "bb")$ll.lon <- bbox_3857["xmin"]
+  attr(map, "bb")$ur.lat <- bbox_3857["ymax"]
+  attr(map, "bb")$ur.lon <- bbox_3857["xmax"]
+  map
+}
+
+# Use the function:
+tw_map_hack <- ggmap_bbox(tw_map)
+
+ggmap(tw_map_hack) + 
+  coord_sf(crs = st_crs(3857)) + # force the ggplot2 map to be in 3857
+  geom_sf(
+    data = tw_shp_crop |>
+           st_transform(crs = 3857),
+    fill = "blue",
+    color = "white",
+    alpha = 0.5,
+    inherit.aes = FALSE
+  )
+```
+
+</details>
+
+It is not easy to remember this. So I create a package `ntpudatavis` with a function `ntpudatavis::ggmap_bbox()`. Once you install that you always have `ggmap_bbox()` function to hack the ggmap object to fit the simple feature plotting.
+
+On top of that we add the following AI prompt:
+
+> When asked to overlay simple feature on ggmap, always call `ntpudatavis::ggmap_bbox(map)` to get a `revised_map` from the return -- here `map` is from `ggmap::get_xxxmap()`. Then use `ggmap(revised_map)+coord_sf(crs = st_crs(3857))` to build the ggmap underlayer for `geom_sf` to overlay. The simple feature used in `geom_sf` must be `st_transform(simple_feature_data, crs = 3857)` transformed. 
+
+In the future, you can ask AI to generate the code with some prompt like:
+
+> How to overlay a simple feature data `tw_shp_crop` on a ggmap map `tw_map`.
