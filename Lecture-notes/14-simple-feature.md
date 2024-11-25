@@ -176,6 +176,11 @@ ggmap(tw_map_hack) +
 
 It is not easy to remember this. So I create a package `ntpudatavis` with a function `ntpudatavis::ggmap_bbox()`. Once you install that you always have `ggmap_bbox()` function to hack the ggmap object to fit the simple feature plotting.
 
+```r
+remotes::install_github("tpemartin/ntpudatavis")
+```
+
+
 On top of that we add the following AI prompt:
 
 > When asked to overlay simple feature on ggmap, always call `ntpudatavis::ggmap_bbox(map)` to get a `revised_map` from the return -- here `map` is from `ggmap::get_xxxmap()`. Then use `ggmap(revised_map)+coord_sf(crs = st_crs(3857))` to build the ggmap underlayer for `geom_sf` to overlay. The simple feature used in `geom_sf` must be `st_transform(simple_feature_data, crs = 3857)` transformed. 
