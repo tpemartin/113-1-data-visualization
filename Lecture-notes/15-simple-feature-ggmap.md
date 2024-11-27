@@ -4,12 +4,44 @@
 
 `ggamp(map)+geom_sf(data=simple_feature_data)`
 
+## Simple feature plot
+
+<details>
+<summary> code </summary>
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/5f89897c659c16a96af72f32eb3d5c6dae8c148b/R/week12-preparation.R#L2-L27>
+
+</details>
+
 ## Overlay ggmap
 
 
 `ggmap(map_from_get_map)+geom_sf(data=simple_feature_data)` 
 
-will have simple feature geom overlay on ggmap, with two problems to solve:
+will have simple feature geom overlay on ggmap
+
+### Request ggmap
+
+<details>
+<summary> code </summary>
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/5f89897c659c16a96af72f32eb3d5c6dae8c148b/R/week12-preparation.R#L32-L50>
+
+</details>
+
+### Direct overlay
+
+<details>
+
+<summary> code </summary>
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/5f89897c659c16a96af72f32eb3d5c6dae8c148b/R/week12-preparation.R#L53-L65>
+
+</details>
+
+![](../img/2024-11-27-11-45-15.png)
+
+:exclamation: :exclamation: :exclamation: with two problems to solve:
 
   1. `geom_sf` and `ggmap` use different aesthetics. The above code will have `geom_sf()` inherit the aesthetics from `ggmap()`. To avoid this, set `inherit.aes=FALSE` in `geom_sf()`.
    > `ggmap(map)+geom_sf(data=simple_feature_data, inherit.aes=FALSE)`  
@@ -80,3 +112,11 @@ On top of that we add the following AI prompt:
 In the future, you can ask AI to generate the code with a simple prompt like:
 
 > How to overlay a **simple feature** data `tw_shp_crop` on a **ggmap map** `tw_map`.
+
+<details>
+
+<summary> code </summary>
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/5f89897c659c16a96af72f32eb3d5c6dae8c148b/R/week12-preparation.R#L67-L81>
+
+</details>
