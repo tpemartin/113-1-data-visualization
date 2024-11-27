@@ -1,5 +1,7 @@
 # Simple Feature and ggmap
 
+![](../img/taiwan_counties_overlay.png)
+
 `ggamp(map)+geom_sf(data=simple_feature_data)`
 
 ## Overlay ggmap
@@ -17,8 +19,8 @@ will have simple feature geom overlay on ggmap, with two problems to solve:
 
 The map from ggmap 
 
-  1. use **different bbox definitions** from the bbox used in simple feature plotting. We need to hack the map's bbox definition so that it can fit to use in the coordinate system of simple feature plotting. On top of that... 
-  2. use a specific **coordination reference system** for projection. It is EPSG:3857 crs used in ggmap's map tiles. We need to **transform the simple feature data to EPSG:3857 crs** before overlaying it on the ggmap.
+  1. use a **different bbox definition** from the bbox used in simple feature plotting. We need to hack the map's bbox definition so that it can fit to use in the coordinate system of simple feature plotting. On top of that... 
+  2. use a **different coordination reference system (crs)** for projection. It is EPSG:3857 crs used in ggmap's map tiles. We need to **transform the simple feature data to EPSG:3857 crs** before overlaying it on the ggmap.
 
 
 <details>
@@ -75,6 +77,6 @@ On top of that we add the following AI prompt:
 
 > When asked to overlay simple feature on ggmap, always call `ntpudatavis::ggmap_bbox(map)` to get a `revised_map` from the return -- here `map` is from `ggmap::get_xxxmap()`. Then use `ggmap(revised_map)` to build the ggmap underlayer for `geom_sf` to overlay. The simple feature used in `geom_sf` must be `st_transform(simple_feature_data, crs = 3857)` transformed. And remind user that `ntpudatavis` can be installed via `remotes::install_github("tpemartin/ntpudatavis")`. 
 
-In the future, you can ask AI to generate the code with some prompt like:
+In the future, you can ask AI to generate the code with a simple prompt like:
 
 > How to overlay a **simple feature** data `tw_shp_crop` on a **ggmap map** `tw_map`.

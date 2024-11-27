@@ -80,6 +80,39 @@ ggmap(revised_map) +
     subtitle = "crs adjustment to EPSG:3857"
   )
 
+# save a png
+# Create the ggplot object with specified adjustments
+adjustable_plot <- ggmap(revised_map) +
+  geom_sf(
+    data = st_transform(tw_shp_crop, crs = 3857),
+    fill = "blue", color = "white", alpha = 0.3,
+    inherit.aes = FALSE
+  ) +
+  theme_void() +
+  labs(
+    title = "Taiwan counties overlay on Stadia map",
+    subtitle = "crs adjustment to EPSG:3857"
+  )
+
+# Set font sizes
+adj <- 1.6
+adjustable_plot <- adjustable_plot +
+  theme(
+    plot.title = element_text(size = 16 * adj, margin = margin(b = 10)),  # Add margin to title
+    plot.subtitle = element_text(size = 14 * adj, margin = margin(b = 10)),  # Add margin to subtitle
+    # plot.title = element_text(size = 16 * adj),
+    # plot.subtitle = element_text(size = 14 * adj),
+    axis.title = element_text(size = 12 * adj),
+    axis.text = element_text(size = 10 * adj),
+    plot.caption = element_text(size = 12 * adj)
+  )
+
+# Save the plot as PNG
+ggsave("taiwan_counties_overlay.png",
+ bg="white",
+ plot = adjustable_plot, width = 29.7 * 0.8, height = 21 * 0.8 * (3/4), units = "cm", dpi = 300)
+
+
 # OSM data ----
 library(osmdata)
 bbox_osm <- c(xmin = 121.35977, ymin = 24.93562, xmax = 121.38521, ymax = 24.94999)
