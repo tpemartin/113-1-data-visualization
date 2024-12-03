@@ -31,6 +31,17 @@ tw_bbox["xmin"] <- 21.5
 
 # crop Taiwan shp
 tw_shp_crop <- st_crop(tw_shp, tw_bbox)
+saveRDS(tw_shp_crop, "data/tw_shp_crop.rds")
+
+# load Taiwan shp ----
+library(tidyverse)
+library(ntpudatavis)
+
+class(tw_shp_crop)
+print(tw_shp_crop)
+
+ggplot() +
+    geom_sf(data = tw_shp_crop)
 
 ### load election data ----
 
