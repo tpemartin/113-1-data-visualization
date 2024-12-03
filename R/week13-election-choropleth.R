@@ -292,3 +292,32 @@ tw_shp_crop_election2024 <- tw_shp_crop %>%
 glimpse(tw_shp_crop_election2024)
 class(tw_shp_crop_election2024)
 
+# 2020 總統大選
+
+gsUrl <- "https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=900775092#gid=900775092"
+election2020 <- read_sheet(gsUrl, sheet = "2020-總統大選")
+
+glimpse(election2020)
+
+# parse $ candidate to factor and check levels
+election2020$candidate <- factor(election2020$candidate)
+levels(election2020$candidate)
+
+election2020$party <- election2020$candidate
+levels(election2020$party) <- c("親民黨", "國民黨", "民進黨")
+
+# 計算各行政區別各candidate的得票率
+election2020 <- election2020 %>%
+    group_by(行政區別) %>%
+    mutate(votes_rate = votes / sum(votes)) %>%
+    ungroup()
+
+# merge election2020 with tw_shp_crop
+tw_shp_crop_election2020 <- tw_shp_crop %>%
+    left_join(election2020, by = c("COUNTYNAME"="行政區別"))
+
+glimpse(tw_shp_crop_election2020)
+class(tw_shp_crop_election2020)
+
+save(tw_shp_crop_election2020, file = "data/tw_shp_crop_election2020.RData")
+save(tw_shp_crop_election2024, file = "data/tw_shp_crop_election2024.RData")

@@ -4,7 +4,7 @@ Gradient (meaning **continuous(連續)** variation) fill/color is a common aesth
 
 ## 2024 總統大選
 
-### 引入總統大選資料
+### 1. 引入總統大選資料
 
 <https://github.com/tpemartin/113-1-data-visualization/blob/49f6220691476e12f561328cb13026bec2dd52d7/R/week13-election-choropleth.R#L266-L273>
 
@@ -14,9 +14,14 @@ Gradient (meaning **continuous(連續)** variation) fill/color is a common aesth
 
 <https://github.com/tpemartin/113-1-data-visualization/blob/6d4552de2945ce62e4bf04ba68b4d1c89fc767f3/R/week13-election-choropleth.R#L275-L286>
 
-### 併入台灣simple feature
+### 2. 併入台灣simple feature
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/5ebce6c3ddc119f518264d94ff9d5b2322574124/R/week13-election-choropleth.R#L288-L293>
+
+> :exclamation: 記住是`sf_df <- sf_df |> left_join(regular_df, by=...)` 方式併入sf object以確保sf class
 
 
+## Exercise 2020 總統大選
 
 
 
