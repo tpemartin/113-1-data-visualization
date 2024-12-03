@@ -279,6 +279,12 @@ levels(election2024$candidate)
 election2024$party <- election2024$candidate
 levels(election2024$party) <- c("民眾黨", "民進黨", "國民黨")
 
+# 計算各行政區別各candidate的得票率
+election2024 <- election2024 %>%
+    group_by(行政區別) %>%
+    mutate(votes_rate = votes / sum(votes)) %>%
+    ungroup()
+
 # merge election2024 with tw_shp_crop
 tw_shp_crop_election2024 <- tw_shp_crop %>%
     left_join(election2024, by = c("COUNTYNAME"="行政區別"))
@@ -286,10 +292,3 @@ tw_shp_crop_election2024 <- tw_shp_crop %>%
 glimpse(tw_shp_crop_election2024)
 class(tw_shp_crop_election2024)
 
-# 計算各COUNTYNAME各candidate的得票率
-tw_shp_crop_election2024 <- tw_shp_crop_election2024 %>%
-    group_by(COUNTYNAME) %>%
-    mutate(votes_rate = votes / sum(votes)) %>%
-    ungroup()
-
-class(tw_shp_crop_election2024)

@@ -2,7 +2,21 @@
 
 Gradient (meaning **continuous(連續)** variation) fill/color is a common aesthetic in ggplot2. It is used to fill the area under a curve or a polygon with a color gradient. The gradient can be a single color gradient or a gradient between two colors. 
 
-## 三位候選人得票率
+## 2024 總統大選
+
+### 引入總統大選資料
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/49f6220691476e12f561328cb13026bec2dd52d7/R/week13-election-choropleth.R#L266-L273>
+
+***
+
+創立party變數
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/49f6220691476e12f561328cb13026bec2dd52d7/R/week13-election-choropleth.R#L275-L280>
+
+### 併入台灣simple feature
+
+
 
 
 
