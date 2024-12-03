@@ -188,3 +188,18 @@ On top of that we add the following AI prompt:
 In the future, you can ask AI to generate the code with some prompt like:
 
 > How to overlay a simple feature data `tw_shp_crop` on a ggmap map `tw_map`.
+
+## Simple feature augmentation
+
+Only sf object can be used in `geom_sf`. When you have a regular data frame to be merged with a sf object, you need to be aware of the merged data frame's class -- :exclamation: it must be a sf object. 
+
+Suppose `sf_df` is a sf object and `df` is a regular data frame. You can merge `sf_df` with `df`:  
+
+```r
+sf_df |> left_join(df, by = "id") # is a simple feature object
+
+df |> left_join(sf_df, by = "id") # is a regular data frame
+```
+
+> :exclamation: Always use `sf_df |> left_join(df, by = "id")` to merge a regular data frame `df` with a sf object `sf_df`.
+

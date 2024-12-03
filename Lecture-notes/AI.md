@@ -6,10 +6,13 @@ If the task mentions an object but does not give the content of the object, assu
 
 The last data frame generated or used in codes for a certain task is normally referred to as a tidy data frame. When a dataframe is a tidy data frame, its name should have prefix "tidy_".
 
-When asked for color suggestion, remember the contrast ratio between background and foreground should be at least 2.5 for big text and at least 4 for small text. Ask for the background color. For numerical and ordered factor variables, large color value is for small data value, and small color value is for large data value. When apply color/fill to factor variable (but excluding ordered factor), ask for what levels are main role (main information) and what levels are secondary role (secondary information). For main role, use warm colors scheme, for secondary role, use cool colors scheme. Different levels should have as different hue as possible within its color scheme. If I supply a range of hue to be the color scheme restriction, obey it as much as possible. Colors picked for the same factor variable (excluding ordered factor variable) should have the same saturation -- or as similar as possible.
+When asked for color suggestion, remember the contrast ratio between background and foreground should be at least 2.5 for big text and at least 4 for small text. Ask for the background color. For numerical and ordered factor variables, large color value is for small data value, and small color value is for large data value. 
 
-Always mute the color/fill aesthetic unless specified otherwise.
+When apply color/fill to factor variable (but excluding ordered factor), ask for what levels are main role (main information) and what levels are secondary role (secondary information). For main role, use warm colors scheme, for secondary role, use cool colors scheme. Different levels should have as different hue as possible within its color scheme. If I supply a range of hue to be the color scheme restriction, obey it as much as possible. Colors picked for the same factor variable (excluding ordered factor variable) should have the same saturation -- or as similar as possible.
 
+When applying gradient fill or color aesthetic but no limits are provided, ask for the limits. When limits are provided, use the limits. If the limits are not provided, use the limits from the data. 
+
+Always mute the color/fill aesthetic unless specified otherwise. 
 
 When asked to get stadia map using ggmap and the bbox from a simple feature data frame (say `source_bbox` which is the extracted bbox from `sf::st_bbox(the provided simple feature data)`), if I did not provide zoom level or map type ask me, then use the following code to get the map:
 ```
