@@ -262,3 +262,34 @@ glimpse(highest_votes_rate2)
 
 unique(highest_votes_rate2$candidate)
 unique(highest_votes_rate$candidate)
+
+# Import 2024-總統大選 sheet
+library(ntpudatavis)
+library(googlesheets4)
+
+gsUrl <- "https://docs.google.com/spreadsheets/d/1-jX-3EK_yspYDgPIy5vwnRKHntw9-dQIpFVhLc5JcXc/edit?gid=900775092#gid=900775092"
+election2024 <- read_sheet(gsUrl, sheet = "2024-總統大選")
+
+glimpse(election2024)
+
+# parse $ candidate to factor and check levels
+election2024$candidate <- factor(election2024$candidate)
+levels(election2024$candidate)
+
+election2024$party <- election2024$candidate
+levels(election2024$party) <- c("民眾黨", "民進黨", "國民黨")
+
+# merge election2024 with tw_shp_crop
+tw_shp_crop_election2024 <- tw_shp_crop %>%
+    left_join(election2024, by = c("COUNTYNAME"="行政區別"))
+
+glimpse(tw_shp_crop_election2024)
+class(tw_shp_crop_election2024)
+
+# 計算各COUNTYNAME各candidate的得票率
+tw_shp_crop_election2024 <- tw_shp_crop_election2024 %>%
+    group_by(COUNTYNAME) %>%
+    mutate(votes_rate = votes / sum(votes)) %>%
+    ungroup()
+
+class(tw_shp_crop_election2024)
