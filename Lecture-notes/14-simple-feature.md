@@ -203,3 +203,18 @@ df |> left_join(sf_df, by = "id") # is a regular data frame
 
 > :exclamation: Always use `sf_df |> left_join(df, by = "id")` to merge a regular data frame `df` with a sf object `sf_df`.
 
+
+***
+
+Load Taiwan simple feature data from **ntpudatavis** package:
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/173e303a22d550cef020cf47fe2bd8c5420958a0/R/week13-election-choropleth.R#L36-L44>
+
+> :exclamation: If you can not see `tw_shp_crop`, run `remotes::install_github("tpemartin/ntpudatavis")` to update/install the package 
+
+***
+
+Load 2024 Taiwan presidential election data:
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/173e303a22d550cef020cf47fe2bd8c5420958a0/R/week13-election-choropleth.R#L46-L61>
+

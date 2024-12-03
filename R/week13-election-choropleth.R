@@ -65,7 +65,11 @@ election <- election |>
 tw_shp_crop_election <- tw_shp_crop |>
     left_join(election, by = "COUNTYNAME")
 
-class(tw_shp_crop_election)
+class(tw_shp_crop_election) # is a sf object
+
+election |>
+  left_join(tw_shp_crop, by = "COUNTYNAME") |>
+  class() # is NOT a sf object
 
 candidate_colors <- list(
     "侯友宜趙少康" = "#0215aa",
