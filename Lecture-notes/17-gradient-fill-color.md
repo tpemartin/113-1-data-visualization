@@ -23,7 +23,7 @@ Gradient (meaning **continuous(連續)** variation) fill/color is a common aesth
 
 ## Exercise 2020 總統大選
 
-
+<https://github.com/tpemartin/113-1-data-visualization/blob/da315a89bfb40abc1a0af88cdd99aa5884f9b770/R/week13-election-choropleth.R#L295-L300>
 
 ## Set limits
 
