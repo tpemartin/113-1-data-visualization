@@ -218,3 +218,8 @@ Load 2024 Taiwan presidential election data:
 
 <https://github.com/tpemartin/113-1-data-visualization/blob/173e303a22d550cef020cf47fe2bd8c5420958a0/R/week13-election-choropleth.R#L46-L61>
 
+***
+
+Merge the election data with the simple feature data:
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/ff7d38b8f598da7003b3b328cd4c84a4f8605df3/R/week13-election-choropleth.R#L63-L72>
