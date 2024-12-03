@@ -68,8 +68,8 @@ tw_shp_crop_election <- tw_shp_crop |>
 class(tw_shp_crop_election) # is a sf object
 
 election |>
-  left_join(tw_shp_crop, by = "COUNTYNAME") |>
-  class() # is NOT a sf object
+    left_join(tw_shp_crop, by = "COUNTYNAME") |>
+    class() # is NOT a sf object
 
 candidate_colors <- list(
     "侯友宜趙少康" = "#0215aa",
@@ -142,7 +142,7 @@ choropleth_map_ke
 choropleth_map_lai
 
 # with limits for scale_fill_gradient ----
-create_choropleth_map <- function(candidate_name, limits=NULL) {
+create_choropleth_map <- function(candidate_name, limits = NULL) {
     choropleth_map <- ggplot() +
         geom_sf(
             data = st_transform(
@@ -161,9 +161,9 @@ create_choropleth_map <- function(candidate_name, limits=NULL) {
         theme_void() +
         theme(
             legend.position = "bottom"
-        )+
+        ) +
         labs(
-            fill=NULL
+            fill = NULL
         )
 
     return(choropleth_map)
@@ -287,7 +287,7 @@ election2024 <- election2024 %>%
 
 # merge election2024 with tw_shp_crop
 tw_shp_crop_election2024 <- tw_shp_crop %>%
-    left_join(election2024, by = c("COUNTYNAME"="行政區別"))
+    left_join(election2024, by = c("COUNTYNAME" = "行政區別"))
 
 glimpse(tw_shp_crop_election2024)
 class(tw_shp_crop_election2024)
@@ -314,10 +314,108 @@ election2020 <- election2020 %>%
 
 # merge election2020 with tw_shp_crop
 tw_shp_crop_election2020 <- tw_shp_crop %>%
-    left_join(election2020, by = c("COUNTYNAME"="行政區別"))
+    left_join(election2020, by = c("COUNTYNAME" = "行政區別"))
 
 glimpse(tw_shp_crop_election2020)
 class(tw_shp_crop_election2020)
 
 save(tw_shp_crop_election2020, file = "data/tw_shp_crop_election2020.RData")
 save(tw_shp_crop_election2024, file = "data/tw_shp_crop_election2024.RData")
+
+# 2020 2024 國民黨得票率 choropleth map ----
+
+library(ggplot2)
+library(sf)
+
+# Create a choropleth map
+choropleth_map2020 <- ggplot() +
+    geom_sf(
+        data = st_transform(
+            tw_shp_crop_election2020 %>%
+                dplyr::filter(party == "國民黨"),
+            crs = 3857
+        ),
+        aes(fill = votes_rate),
+        inherit.aes = FALSE
+    ) +
+    scale_fill_gradient(
+        low = "white", high = "#0215aa", na.value = "transparent",
+        guide = "legend", labels = scales::percent_format(scale = 100)
+    ) +
+    theme_void()
+
+choropleth_map2024 <- ggplot() +
+    geom_sf(
+        data = st_transform(
+            tw_shp_crop_election2024 %>%
+                dplyr::filter(party == "國民黨"),
+            crs = 3857
+        ),
+        aes(fill = votes_rate),
+        inherit.aes = FALSE
+    ) +
+    scale_fill_gradient(
+        low = "white", high = "#0215aa", na.value = "transparent",
+        guide = "legend", labels = scales::percent_format(scale = 100)
+    ) +
+    theme_void()
+
+# 合併成一張圖, 標題為 "2020 2024 國民黨得票率"
+
+library(patchwork)
+
+choropleth_map2020 + choropleth_map2024 +
+    plot_annotation(title = "2020 2024 國民黨得票率")
+
+# 設fill imit c(0, 0.8)
+
+choropleth_map2024_limits <- ggplot() +
+    geom_sf(
+        data = st_transform(
+            tw_shp_crop_election2024 %>%
+                dplyr::filter(party == "國民黨"),
+            crs = 3857
+        ),
+        aes(fill = votes_rate),
+        inherit.aes = FALSE
+    ) +
+    scale_fill_gradient(
+        limits = c(0, 0.8),
+        low = "white", high = "#0215aa", na.value = "transparent",
+        guide = "legend", labels = scales::percent_format(scale = 100)
+    ) +
+    theme_void() +
+    theme(
+        legend.position = "bottom"
+    ) +
+    labs(
+        title="2024",
+        fill = NULL
+    )
+
+choropleth_map2020_limits <- ggplot() +
+    geom_sf(
+        data = st_transform(
+            tw_shp_crop_election2020 %>%
+                dplyr::filter(party == "國民黨"),
+            crs = 3857
+        ),
+        aes(fill = votes_rate),
+        inherit.aes = FALSE
+    ) +
+    scale_fill_gradient(
+        limits = c(0, 0.8),
+        low = "white", high = "#0215aa", na.value = "transparent",
+        guide = "legend", labels = scales::percent_format(scale = 100)
+    ) +
+    theme_void() +
+    theme(
+        legend.position = "bottom"
+    ) +
+    labs(
+        title="2020",
+        fill = NULL
+    )
+
+choropleth_map2020_limits + choropleth_map2024_limits +
+    plot_annotation(title = "2020 2024 國民黨得票率")

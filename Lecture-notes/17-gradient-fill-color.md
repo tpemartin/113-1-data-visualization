@@ -25,7 +25,14 @@ Gradient (meaning **continuous(連續)** variation) fill/color is a common aesth
 
 <https://github.com/tpemartin/113-1-data-visualization/blob/da315a89bfb40abc1a0af88cdd99aa5884f9b770/R/week13-election-choropleth.R#L295-L300>
 
+## Choropleth map (面量圖)
+
+![](../img/2024-12-03-15-26-46.png)
+
+> :exclamation: `fill`美學mapping，內訂是以資料的最大值及最小值來map到fill裡的low及high, 不同年度的資料可能有不同的最大值及最小值，所以要設定`limits`參數來固定最大值及最小值
+
 ## Set limits
 
 When graph uses gradient fill aesthetic but no limits are provided, ask for the limits. When limits are provided, use the limits. If the limits are not provided, use the limits from the data. 
 
+![](../img/2024-12-03-15-25-50.png)
