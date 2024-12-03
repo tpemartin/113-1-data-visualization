@@ -10,9 +10,9 @@ Gradient (meaning **continuous(連續)** variation) fill/color is a common aesth
 
 ***
 
-創立party變數
+創立party變數，及算各行政區各candidate得票率
 
-<https://github.com/tpemartin/113-1-data-visualization/blob/49f6220691476e12f561328cb13026bec2dd52d7/R/week13-election-choropleth.R#L275-L280>
+<https://github.com/tpemartin/113-1-data-visualization/blob/6d4552de2945ce62e4bf04ba68b4d1c89fc767f3/R/week13-election-choropleth.R#L275-L286>
 
 ### 併入台灣simple feature
 
