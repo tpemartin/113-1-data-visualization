@@ -285,6 +285,8 @@ election2024 <- election2024 %>%
     mutate(votes_rate = votes / sum(votes)) %>%
     ungroup()
 
+election2024 |>
+    write_sheet(gsUrl, sheet = "2024-總統大選")
 # merge election2024 with tw_shp_crop
 tw_shp_crop_election2024 <- tw_shp_crop %>%
     left_join(election2024, by = c("COUNTYNAME" = "行政區別"))
@@ -389,7 +391,7 @@ choropleth_map2024_limits <- ggplot() +
         legend.position = "bottom"
     ) +
     labs(
-        title="2024",
+        title = "2024",
         fill = NULL
     )
 
@@ -413,7 +415,7 @@ choropleth_map2020_limits <- ggplot() +
         legend.position = "bottom"
     ) +
     labs(
-        title="2020",
+        title = "2020",
         fill = NULL
     )
 

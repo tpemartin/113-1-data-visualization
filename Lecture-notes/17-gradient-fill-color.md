@@ -42,3 +42,8 @@ When graph uses gradient fill aesthetic but no limits are provided, ask for the 
 <https://github.com/tpemartin/113-1-data-visualization/blob/0317da6f040f5300bae82d8bef47001f106590d9/R/week13-election-choropleth.R#L370-L421>
 
 ![](../img/2024-12-03-15-25-50.png)
+
+## Looker Studio
+
+[![](../img/2024-12-04-10-36-48.png)](https://lookerstudio.google.com/reporting/9d82030f-08db-465d-9df8-824cd1910412/page/p_n6j8r8cjnd)
+
