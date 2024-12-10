@@ -120,6 +120,7 @@ taipei_mrt <- sf::st_read(path)
 # transform the CRS to 4326
 taipei_mrt_4326 <- st_transform(taipei_mrt, crs = 4326)
 
+
 ### tidy up for big query
 
 ## Select only RouteName and geometry columns

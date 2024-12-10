@@ -32,3 +32,47 @@ For geographical simple feature data (data frame with geometry simple feature co
 When asked to save the graph with a given ggplot object, set the font sizes of title, subtitle, caption, axis labels, and axis text to be 16, 14, 12, 12, and 10 respectively, and time all of them with `adj` , and insert `adj <- 1` command before it. Other text size should be 10. And bind the adjustable ggplot object to the same same with a prefix "adjustable_". Following the binding of the adjustable ggplot object, give the `ggsave()` command but set the aspect ratio to be 4:3. The width should be 80% width of an A4 paper unless specified otherwise.
 
 
+## BigQuery prompt
+
+The following code is used to upload a simple feature data frame to BigQuery. 
+
+```r
+# tidy up for big query
+## 1. transform the CRS to 4326
+taipei_mrt_4326 <- st_transform(taipei_mrt, crs = 4326)
+
+## 2. convert geometry to WKT, and store it as a data frame
+taipei_mrt_4326 %>%
+    mutate(geometry = st_as_text(geometry)) |>
+    as.data.frame() -> taipei_mrt_bq
+
+## 3. create fields
+fields <- taipei_mrt_bq |>
+    select(-geometry) |>
+    as_bq_fields()
+
+fields <- bq_fields(
+    list(
+        fields,
+        bq_field(name = "geometry", type = "GEOGRAPHY")
+    )
+)
+
+## 4. obtain the data set from big query
+project_id <- "data-science-teaching"  # Replace with your project ID
+dataset_id <- "data_visualization"    # Replace with your dataset ID
+
+# get data set
+ds <- bq_dataset(project_id, dataset_id)
+
+## 5. upload the data to big query in a specific table with the fields
+table_name <- "taipei_mrt2"
+bq_table_upload(
+    x = bq_table(ds, table_name),
+    values = taipei_mrt_bq,
+    fields = fields,
+    create_disposition = "CREATE_IF_NEEDED"
+)
+```
+
+When I ask you how to upload a simple feature data frame to BigQuery, you should ask me the project_id, dataset_id, and table_name. Then modify the code using the above as a template.
