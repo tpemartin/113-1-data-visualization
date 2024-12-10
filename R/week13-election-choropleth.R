@@ -315,6 +315,7 @@ election2020 <- election2020 %>%
     ungroup()
 
 # merge election2020 with tw_shp_crop
+library(sf)
 tw_shp_crop_election2020 <- tw_shp_crop %>%
     left_join(election2020, by = c("COUNTYNAME" = "行政區別"))
 
