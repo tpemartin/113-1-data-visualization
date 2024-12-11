@@ -1,44 +1,11 @@
 # Simpe Feature and BigQuery
 
+
+[![](../img/2024-12-11-11-13-20.png)](https://lookerstudio.google.com/reporting/9d82030f-08db-465d-9df8-824cd1910412/page/p_hhbzsc5pnd)
+
 Looker studio對於simple feature要求必需是來自BigQuery的GEOGRAPHY data type：
 
    - 如何將simple feature上傳到BigQuery成為GEOGRAPHY data
-
-1. 轉換simple feature
-   - crs轉換成4326，確保座標系統為Google map使用的格式。
-   - geometry成WKT格式[^1]的單純character class。
-   - 將simple feature轉換成單純的data frame。
-2. 準備在BigQuery中的fields (相當於R裡的class parsing)
-   - 將geometry field設定為GEOGRAPHY data type。
-3. 準備上傳BigQuery成為一個table (相當於R裡的data frame)  
-   - project id, date set id, table name 設定。
-   - 準備好的fields設定。
-   - 轉換好的data frame。
-
-
-# BigQuery
-
-BigQuery is a serverless, highly scalable, and cost-effective multi-cloud data warehouse designed for business agility. It enables super-fast SQL queries using the processing power of Google's infrastructure.
-
-**Install the Necessary Packages**:
-   
-   ```r
-   install.packages("bigrquery")
-   ```
-
-![](../img/2024-12-11-09-24-24.png)
-
-**Open BigQuery**
-
-[課程Bq dataset分享連結](https://console.cloud.google.com/bigquery?ws=!1m4!1m3!3m2!1sdata-science-teaching!2sdata_visualization)
-
-Need to authorize for the first time.  
-![](../img/2024-12-11-09-32-40.png)
-
-Find the table and export to Looker Studio.  
-![](../img/2024-12-11-09-56-20.png)
-
-# AI preset
 
 ## 台北捷運線
 
@@ -57,8 +24,61 @@ library(sf)
 taipei_mrt <- sf::st_read("https://raw.githubusercontent.com/tpemartin/113-1-data-visualization/refs/heads/main/public-data/TpeMRTRoutes_TWD97_%E8%87%BA%E5%8C%97%E9%83%BD%E6%9C%83%E5%8D%80%E5%A4%A7%E7%9C%BE%E6%8D%B7%E9%81%8B%E7%B3%BB%E7%B5%B1%E8%B7%AF%E7%B6%B2%E5%9C%96-121208.json")
 ```
 
+## ggmap ggplot繪圖
+
   - 試著使用AI畫出有stadia map底圖的捷運路線圖[^2]。
   
+# Looker Studio繪圖
+
+要能在Looker Studio上繪製simple feature，必須先將simple feature上傳到BigQuery成為GEOGRAPHY data type。   
+
+# BigQuery
+
+BigQuery is a serverless, highly scalable, and cost-effective multi-cloud data warehouse designed for business agility. It enables super-fast SQL queries using the processing power of Google's infrastructure.
+
+## bigrquery package
+
+**Install the Necessary Packages**:
+   
+   ```r
+   install.packages("bigrquery")
+   ```
+
+**Authenticate**:
+
+`bigrquery::bq_auth()`
+
+<img src="../img/2024-12-11-09-24-24.png" width="450px">
+
+## Upload Simple Feature to BigQuery
+
+1. 轉換simple feature
+   - crs轉換成4326，確保座標系統為Google map使用的格式。
+   - geometry成WKT格式[^1]的單純character class。
+   - 將simple feature轉換成單純的data frame。
+2. 準備在BigQuery中的fields (相當於R裡的class parsing)
+   - 將geometry field設定為GEOGRAPHY data type。
+3. 準備上傳BigQuery成為一個table (相當於R裡的data frame)  
+   - project id, date set id, table name 設定。
+   - 準備好的fields設定。
+   - 轉換好的data frame。
+
+## AI preset
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/03007bafc23beaa9475e15a7d1453e00d69f584f/Lecture-notes/AI.md?plain=1#L37-L78>
+
+## Export to Looker Studio
+
+**Open BigQuery**
+
+[課程Bq dataset分享連結](https://console.cloud.google.com/bigquery?ws=!1m4!1m3!3m2!1sdata-science-teaching!2sdata_visualization)
+
+Need to authorize for the first time. 
+<img src="../img/2024-12-11-09-32-40.png" width = "180px"> 
+
+
+Find the table and export to Looker Studio.  
+<img src="../img/2024-12-11-09-56-20.png" width = "450px"> 
 
 
 
