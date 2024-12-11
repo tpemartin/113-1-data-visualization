@@ -1,9 +1,46 @@
 # Simpe Feature and BigQuery
 
-   - 如何將simple feature上傳到BigQuery成為GEOGRAPHY data
-  
-## 台北捷運線
+Looker studio對於simple feature要求必需是來自BigQuery的GEOGRAPHY data type：
 
+   - 如何將simple feature上傳到BigQuery成為GEOGRAPHY data
+
+1. 轉換simple feature
+   - crs轉換成4326，確保座標系統為Google map使用的格式。
+   - geometry成WKT格式[^1]的單純character class。
+   - 將simple feature轉換成單純的data frame。
+2. 準備在BigQuery中的fields (相當於R裡的class parsing)
+   - 將geometry field設定為GEOGRAPHY data type。
+3. 準備上傳BigQuery成為一個table (相當於R裡的data frame)  
+   - project id, date set id, table name 設定。
+   - 準備好的fields設定。
+   - 轉換好的data frame。
+
+
+# BigQuery
+
+BigQuery is a serverless, highly scalable, and cost-effective multi-cloud data warehouse designed for business agility. It enables super-fast SQL queries using the processing power of Google's infrastructure.
+
+**Install the Necessary Packages**:
+   
+   ```r
+   install.packages("bigrquery")
+   ```
+
+![](../img/2024-12-11-09-24-24.png)
+
+**Open BigQuery**
+
+[課程Bq dataset分享連結](https://console.cloud.google.com/bigquery?ws=!1m4!1m3!3m2!1sdata-science-teaching!2sdata_visualization)
+
+Need to authorize for the first time.  
+![](../img/2024-12-11-09-32-40.png)
+
+Find the table and export to Looker Studio.  
+![](../img/2024-12-11-09-56-20.png)
+
+# AI preset
+
+## 台北捷運線
 
 ### GeoJSON
 
@@ -18,92 +55,4 @@
 
 
 
-
-
-
-# BigQuery
-
-BigQuery is a serverless, highly scalable, and cost-effective multi-cloud data warehouse designed for business agility. It enables super-fast SQL queries using the processing power of Google's infrastructure. Simply move your data into BigQuery and let us handle the hard work. You can control access to both the project and your data based on your business needs, such as giving others the ability to view or query your data.
-
-
-To upload a feature with a geometry column as a GEOGRAPHY data type to BigQuery using R, you can follow these steps:
-
-1. **Install the Necessary Packages**:
-   Ensure that you have the `bigrquery`, `sf`, and `dplyr` packages installed. You can install them using:
-
-   ```r
-   install.packages("bigrquery")
-   install.packages("sf")
-   install.packages("dplyr")
-   ```
-
-2. **Load the Required Libraries**:
-   Load the libraries in your R script or R session:
-
-   ```r
-   library(bigrquery)
-   library(sf)
-   library(dplyr)
-   ```
-
-3. **Authenticate with BigQuery**:
-   Use your Google Cloud credentials to authenticate:
-
-   ```r
-   bq_auth(path = "path/to/your/service-account-key.json")
-   ```
-
-4. **Create Your Spatial Data**:
-   Create an `sf` object. For example, create a simple feature collection with a GEOMETRY column:
-
-   ```r
-   # Create a simple data frame
-   data <- data.frame(
-     id = 1,
-     wkt = "POINT(121.5654 25.0330)" # WKT for a point in Taipei
-   )
-
-   # Convert to an sf object
-   sf_data <- st_as_sf(data, wkt = "wkt", crs = 4326) # Using WGS 84
-   ```
-
-5. **Convert the SF Object to a DataFrame with a GEOGRAPHY Column**:
-   Convert the geometry to a GEOGRAPHY type understood by BigQuery:
-
-   ```r
-   sf_data$geography <- st_as_text(sf_data$geometry) 
-   sf_data <- sf_data %>%
-     select(id, geography)
-   ```
-
-6. **Upload to BigQuery**:
-   Use the `bq_table_upload()` function to upload your data to a BigQuery table. Specify the dataset and table name.
-
-   ```r
-   project_id <- "your-gcloud-project-id"
-   dataset_id <- "your_dataset"
-   table_id <- "your_table"
-
-   # Define the BigQuery table
-   bq_table <- bq_table(project_id, dataset_id, table_id)
-
-   # Upload data to BigQuery
-   bq_table_upload(
-     x = bq_table,
-     values = sf_data,
-     schema = bq_schema(
-       id = "INTEGER",
-       geography = "GEOGRAPHY"
-     ),
-     create_disposition = "CREATE_IF_NEEDED",
-     write_disposition = "WRITE_TRUNCATE"
-   )
-   ```
-
-This sequence first creates a simple feature, converts it to an appropriate format for BigQuery, and uploads it with the correct schema. Adjust the dataset, table names, and authentication details according to your setup.
-
-## Taipei MRT
-
-### GeoJSON
-
-  - <https://data.gov.tw/dataset/121208>
+[^1]: WKT (Well-Known Text) is a text markup language for representing vector geometry objects. It is used to describe the spatial data in a human-readable format.
