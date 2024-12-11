@@ -19,7 +19,7 @@ When asked to get stadia map using ggmap and the bbox from a simple feature data
 library(ggmap)
 names(source_bbox) <- c("left", "bottom", "right", "top")
 
-tw_map <- get_stadia_map(
+tw_map <- get_stadiamap(
 source_bbox,
 zoom = the zoom level I answer,
 maptype = the map type I answer
