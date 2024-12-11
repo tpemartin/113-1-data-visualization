@@ -14,7 +14,8 @@ When applying gradient fill or color aesthetic but no limits are provided, ask f
 
 Always mute the color/fill aesthetic unless specified otherwise. 
 
-When asked to get stadia map using ggmap and the bbox from a simple feature data frame (say `source_bbox` which is the extracted bbox from `sf::st_bbox(the provided simple feature data)`), if I did not provide zoom level or map type ask me, then use the following code to get the map:
+When asked to get stadia map using ggmap and the bbox from a simple feature data frame, say `example_sf`. Transform it to CRS4326 through `example_sf_4326 = st_transform(example_sf, crs = 4326)`, then extract the bbox through `source_bbox <- sf::st_bbox(example_sf_4326)`. If I did not provide zoom level or map type ask me, then use the following code to get the map:
+
 ```
 library(ggmap)
 names(source_bbox) <- c("left", "bottom", "right", "top")
@@ -27,7 +28,9 @@ maptype = the map type I answer
 ```
 Be careful, never use `get_stamenmap` but always use `get_stadiamap` instead. And the maytype value should be one of the following stamen_terrain, stamen_toner, stamen_toner_lite, stamen_watercolor, stamen_terrain_background, stamen_toner_background, stamen_terrain_lines, stamen_terrain_labels, stamen_toner_lines, stamen_toner_labels. 
 
-For geographical simple feature data (data frame with geometry simple feature column), always use `geom_sf` for plotting unless impossible. When simplifying simple features, always use `st_simplify` with `preserveTopology = TRUE` and `dTolerance =1`. When asked to overlay simple feature on ggmap, always call `ntpudatavis::ggmap_bbox(map)` to get a `revised_map` from the return -- here `map` is from `ggmap::get_xxxmap()`. Then use `ggmap(revised_map)` to build the ggmap underlayer for `geom_sf` to overlay -- no `ggplot()` needed at the beginning. The simple feature used in `geom_sf` must be `st_transform(simple_feature_data, crs = 3857)` transformed and `inherit.aes=FALSE`. And remind user that `ntpudatavis` can be installed via `remotes::install_github("tpemartin/ntpudatavis")`. Whenever `ggmap()` or `geom_sf()` is used, also use `theme_void()`. 
+When asked to overlay simple feature, say `example_sf_4326` on ggmap, always call `ntpudatavis::ggmap_bbox(map)` to get a `revised_map` from the return -- here `map` is from `ggmap::get_xxxmap()`. Then use `ggmap(revised_map)` to build the ggmap underlayer for `geom_sf` to overlay -- no `ggplot()` needed at the beginning. The simple feature used in `geom_sf` must be `st_transform(example_sf_4326, crs = 3857)` transformed and `inherit.aes=FALSE`. And remind user that `ntpudatavis` can be installed via `remotes::install_github("tpemartin/ntpudatavis")`. Whenever `ggmap()` or `geom_sf()` is used, also use `theme_void()`. 
+
+For geographical simple feature data (data frame with geometry simple feature column), always use `geom_sf` for plotting unless impossible. When simplifying simple features, always use `st_simplify` with `preserveTopology = TRUE` and `dTolerance =1`. 
 
 When asked to save the graph with a given ggplot object, set the font sizes of title, subtitle, caption, axis labels, and axis text to be 16, 14, 12, 12, and 10 respectively, and time all of them with `adj` , and insert `adj <- 1` command before it. Other text size should be 10. And bind the adjustable ggplot object to the same same with a prefix "adjustable_". Following the binding of the adjustable ggplot object, give the `ggsave()` command but set the aspect ratio to be 4:3. The width should be 80% width of an A4 paper unless specified otherwise.
 
