@@ -141,22 +141,20 @@ taipei_mrt <- sf::st_read("https://raw.githubusercontent.com/tpemartin/113-1-dat
 
 ## graphing ----
 
-### convert to 4326
+# 先將 taipei_mrt 轉換為 CRS 4326
 taipei_mrt_4326 <- st_transform(taipei_mrt, crs = 4326)
 
-library(ggmap)
+# 提取bbox
 source_bbox <- sf::st_bbox(taipei_mrt_4326)
+
+# 下載stadia map
 names(source_bbox) <- c("left", "bottom", "right", "top")
+tw_map <- get_stadiamap(source_bbox, zoom = 12, maptype = "stamen_toner_lite")
 
-# 獲取地圖並疊加簡單特徵
-tw_map <- get_stadiamap(
-  source_bbox,
-  zoom = 12,  # 您可以根據需要更改此值
-  maptype = "stamen_toner_lite"
-)
-
+# 獲取修正後的地圖以進行疊加
 revised_map <- ntpudatavis::ggmap_bbox(tw_map)
 
+# 繪製地圖並疊加 simple feature
 ggmap(revised_map) +
   geom_sf(data = st_transform(taipei_mrt_4326, crs = 3857), inherit.aes = FALSE) +
   theme_void()
