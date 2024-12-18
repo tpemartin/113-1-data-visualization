@@ -1,7 +1,7 @@
 # Simpe Feature and BigQuery
 
 
-[![](../img/2024-12-11-11-13-20.png)](https://lookerstudio.google.com/reporting/9d82030f-08db-465d-9df8-824cd1910412/page/p_hhbzsc5pnd)
+[![](../img/2024-12-11-11-13-20.png)](https://lookerstudio.google.com/reporting/e22e7a31-3ff5-4ebf-b8e0-eb89ea791b53)
 
 Looker studio對於simple feature要求必需是來自BigQuery的GEOGRAPHY data type：
 
