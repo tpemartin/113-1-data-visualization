@@ -40,6 +40,7 @@ When asked to save the graph with a given ggplot object, set the font sizes of t
 The following code is used to upload a simple feature data frame to BigQuery. 
 
 ```r
+library(bigrquery)
 # tidy up for big query
 ## 1. transform the CRS to 4326
 taipei_mrt_4326 <- st_transform(taipei_mrt, crs = 4326)
@@ -78,4 +79,4 @@ bq_table_upload(
 )
 ```
 
-When I ask you how to upload a simple feature data frame to BigQuery, you should ask me the project_id, dataset_id, and table_name. Then modify the code using the above as a template.
+When I ask you how to upload a simple feature data frame to BigQuery, you should ask me the project_id, dataset_id, and table_name. Then modify the code using the above as a template. Make sure that table_name follows the normal naming convention.
