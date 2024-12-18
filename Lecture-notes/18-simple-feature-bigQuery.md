@@ -36,7 +36,29 @@ taipei_mrt <- sf::st_read("https://raw.githubusercontent.com/tpemartin/113-1-dat
 
 BigQuery is a serverless, highly scalable, and cost-effective multi-cloud data warehouse designed for business agility. It enables super-fast SQL queries using the processing power of Google's infrastructure.
 
-## bigrquery package
+## BigQuery Studio 
+**Open BigQuery**
+
+[課程Bq dataset分享連結](https://console.cloud.google.com/bigquery?ws=!1m4!1m3!3m2!1sdata-science-teaching!2sdata_visualization)
+
+Need to authorize for the first time. 
+<img src="../img/2024-12-11-09-32-40.png" width = "180px"> 
+
+***
+
+![](../img/2024-12-18-11-57-36.png)
+
+  - project id: data-science-teaching
+  - dataset id:  data_visualization  
+  - table name: taipei_mrt, etc.
+
+> :exclamation: **注意**：在BigQuery Studio上，table name不要有空格, 並且table name不要有特殊符號。
+
+## 上傳Simple Feature到BigQuery
+
+
+
+### bigrquery package
 
 **Install the Necessary Packages**:
    
@@ -50,7 +72,7 @@ BigQuery is a serverless, highly scalable, and cost-effective multi-cloud data w
 
 <img src="../img/2024-12-11-09-24-24.png" width="450px">
 
-## Upload Simple Feature to BigQuery
+### Upload Simple Feature to BigQuery
 
 1. 轉換simple feature
    - crs轉換成4326，確保座標系統為Google map使用的格式。
@@ -63,24 +85,22 @@ BigQuery is a serverless, highly scalable, and cost-effective multi-cloud data w
    - 準備好的fields設定。
    - 轉換好的data frame。
 
-## AI preset
+### 使用AI preset
 
-<https://github.com/tpemartin/113-1-data-visualization/blob/03007bafc23beaa9475e15a7d1453e00d69f584f/Lecture-notes/AI.md?plain=1#L37-L78>
+<https://github.com/tpemartin/113-1-data-visualization/blob/504a66ad89f2d5115ca456ad5ab13a06ef865fe8/Lecture-notes/AI.md?plain=1#L40-L82>
 
 ## Export to Looker Studio
-
-**Open BigQuery**
-
-[課程Bq dataset分享連結](https://console.cloud.google.com/bigquery?ws=!1m4!1m3!3m2!1sdata-science-teaching!2sdata_visualization)
-
-Need to authorize for the first time. 
-<img src="../img/2024-12-11-09-32-40.png" width = "180px"> 
 
 
 Find the table and export to Looker Studio.  
 <img src="../img/2024-12-11-09-56-20.png" width = "450px"> 
 
 
+## R and BigQuery
+
+  - dplyr package: <https://dbplyr.tidyverse.org/>
+
+<https://github.com/tpemartin/113-1-data-visualization/blob/edd6dc957824fcedb6bbba84fbe149537d2fb0a1/R/week15.R#L43-L53>
 
 [^1]: WKT (Well-Known Text) is a text markup language for representing vector geometry objects. It is used to describe the spatial data in a human-readable format.  
 [^2]: [參考對話](https://github.com/tpemartin/113-1-data-visualization/blob/main/chat/taipei-mrt-overly-stadia-map.txt)
