@@ -38,3 +38,16 @@ bq_table_upload(
     fields = fields,
     create_disposition = "CREATE_IF_NEEDED"
 )
+
+
+library(dplyr)
+
+project_id <- "data-science-teaching"
+data_set <- "data_visualization"
+
+# create a connection
+con <- dbConnect(
+  bigrquery::bigquery(),
+  project = project_id,
+  dataset = data_set
+)
