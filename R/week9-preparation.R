@@ -10,7 +10,7 @@ unique(flightDestinationAsia$`細分2`) |>
 
 # Prepare the data to create a 100% stacked bar chart
 tidy_data <- flightDestinationAsia %>%
-  group_by(Year, 細分2) %>%
+  group_by(Year, `細分2`) %>%
   summarise(Total_Counts = sum(Total_Counts, na.rm = TRUE)) %>%
   ungroup()
 

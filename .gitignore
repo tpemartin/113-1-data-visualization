@@ -39,8 +39,6 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# pkgdown site
-docs/
 
 # translation temp files
 po/*~
@@ -53,3 +51,21 @@ data/a3e3bb521caed0cb4d06e43fb7d5b15a_export.csv
 data/Gs - 2024-6-29_menu.csv
 Rplot.png
 total_people_by_country.csv
+R/05-documentation.docx
+R/05-documentation.docx
+R/05-documentation.qmd
+data/附件9-1131經濟學系獎助學金審核表.xlsx
+chat/.DS_Store
+data/a04001201-2101252804.csv
+adjustable_g2_plot.png
+data/
+private/
+md/step 1.md
+md/syllabus.html
+md/week6-preparation.html
+Rplot01.png
+Rplots.pdf
+USR113-2-subsidy.md
+Video Screen1729064508323.webm
+chat/導生活動簽到與經費核鎖申請表.pdf
+113-1-資料視覺化圖例 - 2024-6-29_UberEats.csv

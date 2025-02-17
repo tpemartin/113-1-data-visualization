@@ -1,0 +1,3 @@
+plot points based on data frame ubereats_sanxia, with the mapping
+x = lon, y = lat, color = rating_cut. However, color definitions when 
+rating_cut is "less than 4" its color is red, "4 to 4.3" is yellow, "4.3 to 4.7" is green, "4.7 above" is blue

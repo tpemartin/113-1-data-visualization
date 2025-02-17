@@ -121,7 +121,7 @@ ggplot(data = tidy_flightDestinationAsia2, aes(x = Year, y = Total_Counts,
   theme_minimal() +
   theme(legend.position = "bottom") -> g2
 
-
+g2
 
 # Create a ordered sequence field for Looker
 tidy_flightDestinationAsia2 <-

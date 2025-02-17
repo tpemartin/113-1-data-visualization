@@ -1,0 +1,5 @@
+I have a sf data frame `taipei_mrt` to upload to BigQuery. How to do that?
+
+project id is "data-science-teaching"
+data set is "data_visualization"
+table name is "taipei mrt practice"

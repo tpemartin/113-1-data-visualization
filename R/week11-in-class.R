@@ -111,3 +111,19 @@ ggplot() +
   geom_sf(
     data = tpe_mrt_sf
   )
+
+# formulate query from bbox_osm
+osmdata_query_religon <- opq(bbox_osm) %>% 
+     add_osm_feature(key="amenity", value="place_of_worship")
+
+# obtain osmdata using the query
+osmdata_religon <- osmdata_sf(osmdata_query_religon)
+
+osmdata_religon$osm_polygons
+
+religon_sf <- osmdata_religon$osm_polygons
+
+ggplot() +
+  geom_sf(
+    data = religon_sf
+  )
